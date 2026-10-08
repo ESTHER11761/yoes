@@ -413,10 +413,48 @@ footer{
         <h3>Polo Boxy Fit Pedrería</h3>
         <p class="category">Polos</p>
         <p class="price">S/ 40</p>
-        <p>Talla: M</p>
-        <button onclick="agregar('Polo Boxy Fit Pedrería - Talla M',40)">
-            AGREGAR AL CARRITO
-        </button>
+       <div style="margin-top:10px;">
+    <strong>Talla:</strong>
+    <select id="tallaPedreria">
+        <option value="M" selected>M</option>
+        <option value="S" disabled>S — Agotado</option>
+        <option value="L" disabled>L — Agotado</option>
+    </select>
+</div>
+
+<div style="margin-top:10px;">
+    <strong>Color:</strong>
+    <select id="colorPedreria">
+        <option value="Marrón">🤎 Marrón</option>
+        <option value="Blanco">🤍 Blanco</option>
+        <option value="Negro" disabled>⚫ Negro — Agotado</option>
+        <option value="Verde botella" disabled>🟢 Verde botella — Agotado</option>
+        <option value="Beige" disabled>🟤 Beige — Agotado</option>
+        <option value="Rojo" disabled>🔴 Rojo — Agotado</option>
+        <option value="Silver" disabled>⚪ Silver — Agotado</option>
+    </select>
+</div>
+
+<div style="margin-top:10px;">
+    <strong>Cantidad:</strong>
+    <input
+        type="number"
+        id="cantidadPedreria"
+        value="1"
+        min="1"
+        style="width:60px;padding:5px;"
+    >
+</div>
+
+<button onclick="agregarConOpciones(
+    'Polo Boxy Fit Pedrería',
+    40,
+    document.getElementById('tallaPedreria').value,
+    document.getElementById('colorPedreria').value,
+    parseInt(document.getElementById('cantidadPedreria').value)
+)">
+    AGREGAR AL CARRITO
+</button>
     </div>
 </div>
 
@@ -591,7 +629,27 @@ function agregar(nombre, precio){
 
     alert(nombre + " agregado al carrito.");
 }
+function agregarConOpciones(nombre, precio, talla, color, cantidad){
 
+    for(let i = 0; i < cantidad; i++){
+
+        carrito.push({
+            nombre: nombre + " - Talla " + talla + " - " + color,
+            precio: precio
+        });
+
+    }
+
+    actualizarCarrito();
+
+    alert(
+        nombre +
+        " agregado al carrito.\n" +
+        "Talla: " + talla +
+        "\nColor: " + color +
+        "\nCantidad: " + cantidad
+    );
+}
 
 function actualizarCarrito(){
 
