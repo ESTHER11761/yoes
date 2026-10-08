@@ -424,15 +424,44 @@ footer{
 
 <div style="margin-top:10px;">
     <strong>Color:</strong>
-    <select id="colorPedreria">
-        <option value="Marrón">🤎 Marrón</option>
-        <option value="Blanco">🤍 Blanco</option>
-        <option value="Negro" disabled>⚫ Negro — Agotado</option>
-        <option value="Verde botella" disabled>🟢 Verde botella — Agotado</option>
-        <option value="Beige" disabled>🟤 Beige — Agotado</option>
-        <option value="Rojo" disabled>🔴 Rojo — Agotado</option>
-        <option value="Silver" disabled>⚪ Silver — Agotado</option>
-    </select>
+   <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;">
+
+    <button type="button"
+        onclick="seleccionarColorPedreria('Marrón',this)"
+        style="width:45px;height:45px;border-radius:50%;background:#795548;border:3px solid #111;cursor:pointer;">
+    </button>
+
+    <button type="button"
+        onclick="seleccionarColorPedreria('Blanco',this)"
+        style="width:45px;height:45px;border-radius:50%;background:#fff;border:3px solid #111;cursor:pointer;">
+    </button>
+
+    <button type="button" disabled
+        style="width:45px;height:45px;border-radius:50%;background:#222;border:3px solid #ccc;opacity:.4;cursor:not-allowed;">
+    </button>
+
+    <button type="button" disabled
+        style="width:45px;height:45px;border-radius:50%;background:#176b45;border:3px solid #ccc;opacity:.4;cursor:not-allowed;">
+    </button>
+
+    <button type="button" disabled
+        style="width:45px;height:45px;border-radius:50%;background:#d8c3a5;border:3px solid #ccc;opacity:.4;cursor:not-allowed;">
+    </button>
+
+    <button type="button" disabled
+        style="width:45px;height:45px;border-radius:50%;background:#d71920;border:3px solid #ccc;opacity:.4;cursor:not-allowed;">
+    </button>
+
+    <button type="button" disabled
+        style="width:45px;height:45px;border-radius:50%;background:#c0c0c0;border:3px solid #ccc;opacity:.4;cursor:not-allowed;">
+    </button>
+
+</div>
+
+<select id="colorPedreria" style="display:none;">
+    <option value="Marrón">Marrón</option>
+    <option value="Blanco">Blanco</option>
+</select>
 </div>
 
 <div style="margin-top:10px;">
@@ -629,8 +658,17 @@ function agregar(nombre, precio){
 
     alert(nombre + " agregado al carrito.");
 }
-function agregarConOpciones(nombre, precio, talla, color, cantidad){
+function seleccionarColorPedreria(color, boton){
 
+    document.getElementById("colorPedreria").value = color;
+
+    document.querySelectorAll('button[onclick^="seleccionarColorPedreria"]').forEach(function(b){
+        b.style.border = "3px solid #ccc";
+    });
+
+    boton.style.border = "4px solid #000";
+}
+    function agregarConOpciones(nombre, precio, talla, color, cantidad){
     for(let i = 0; i < cantidad; i++){
 
         carrito.push({
