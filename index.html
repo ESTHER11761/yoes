@@ -755,7 +755,22 @@ function agregar(nombre, precio){
 
     alert(nombre + " agregado al carrito.");
 }
-function seleccionarTallaPedreria(talla, boton){
+function cambiarCantidadPedreria(cambio){
+
+    const campo = document.getElementById("cantidadPedreria");
+
+    let cantidad = parseInt(campo.value) || 1;
+
+    cantidad = cantidad + cambio;
+
+    if(cantidad < 1){
+        cantidad = 1;
+    }
+
+    campo.value = cantidad;
+}
+    
+    function seleccionarTallaPedreria(talla, boton){
 
     document.getElementById("tallaPedreria").value = talla;
 
