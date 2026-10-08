@@ -343,7 +343,66 @@ footer{
         font-size:28px;
     }
 }
-</style>
+/* DISEÑO DESTACADO YOES - POLO PEDRERÍA */
+
+#productosLista .product:first-child{
+    grid-column:1 / -1;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    padding:30px;
+    border-radius:20px;
+    align-items:center;
+}
+
+#productosLista .product:first-child .product-img{
+    height:600px;
+    border-radius:18px;
+    background:#f5f5f5;
+}
+
+#productosLista .product:first-child .product-info{
+    padding:20px;
+}
+
+#productosLista .product:first-child .product-info h3{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+#productosLista .product:first-child .category{
+    font-size:20px;
+}
+
+#productosLista .product:first-child .price{
+    font-size:42px;
+    margin:20px 0 25px;
+}
+
+#productosLista .product:first-child .product-info strong{
+    font-size:20px;
+}
+
+#productosLista .product:first-child .product-info select{
+    padding:12px 18px;
+    font-size:18px;
+    border-radius:10px;
+    margin-left:10px;
+}
+
+#productosLista .product:first-child .product-info input{
+    font-size:20px;
+    border:1px solid #ddd;
+    border-radius:8px;
+}
+
+#productosLista .product:first-child button{
+    margin-top:25px;
+    padding:18px;
+    font-size:18px;
+    font-weight:bold;
+    border-radius:12px;
+}</style>
 </head>
 
 <body>
