@@ -169,23 +169,26 @@ nav a:hover{
 
 .product-img{
     height:280px;
-    background:linear-gradient(135deg,#eee,#ddd);
+    background:#eee;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#777;
-    font-weight:bold;
-    text-align:center;
-    padding:20px;
+    overflow:hidden;
+    padding:0;
 }
+
 .product-img img{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
 }
+
 .product-info{
     padding:18px;
+    background:white;
+    position:relative;
+    z-index:2;
 }
 
 .product-info h3{
