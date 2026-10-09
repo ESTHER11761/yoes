@@ -406,20 +406,23 @@ footer{
     font-weight:bold;
     border-radius:12px;
 }
-}
-/* Selector de colores YOES */
-#productosLista .color-options{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    grid-auto-flow:row;
-    gap:8px 6px;
+/* Selector de colores YOES: 4 colores en la primera fila y 3 en la segunda */
+#productosLista .product[data-name="Polo Boxy Fit Pedrería"] .color-options{
+    display:grid !important;
+    grid-template-columns:repeat(4, 40px) !important;
+    grid-auto-flow:row !important;
+    column-gap:6px;
+    row-gap:10px;
     align-items:start;
     justify-content:start;
-    width:100%;
-    max-width:180px;
+    width:max-content;
+    max-width:100%;
     margin-top:12px;
 }
-#productosLista .color-option{
+#productosLista .product[data-name="Polo Boxy Fit Pedrería"] .color-option{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     width:40px;
     min-width:0;
     text-align:center;
@@ -480,7 +483,6 @@ footer{
         width: 30px;
         height: 2px;
     }
-}
 }
 
 </style>
