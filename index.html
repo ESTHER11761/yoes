@@ -409,9 +409,9 @@ footer{
 /* Selector de colores YOES: 4 colores en la primera fila y 3 en la segunda */
 #productosLista .product[data-name="Polo Boxy Fit Pedrería"] .color-options{
     display:grid !important;
-    grid-template-columns:repeat(4, 40px) !important;
+    grid-template-columns:repeat(4, 46px) !important;
     grid-auto-flow:row !important;
-    column-gap:6px;
+    column-gap:4px;
     row-gap:10px;
     align-items:start;
     justify-content:start;
@@ -423,21 +423,21 @@ footer{
     display:flex;
     flex-direction:column;
     align-items:center;
-    width:40px;
+    width:46px;
     min-width:0;
     text-align:center;
-    font-size:10px;
-    line-height:1.15;
-    color:#555;
+    font-size:11px;
+    line-height:1.2;
+    color:#444;
     overflow-wrap:anywhere;
 }
-#productosLista .color-swatch{
+#productosLista .product[data-name="Polo Boxy Fit Pedrería"] .color-swatch{
     position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
-    width:30px;
-    height:30px;
+    width:34px;
+    height:34px;
     max-width:100%;
     margin:0 auto 5px;
     border-radius:50%;
@@ -480,7 +480,7 @@ footer{
 @media (max-width: 600px) {
     #productosLista .color-swatch.unavailable::before,
     #productosLista .color-swatch.unavailable::after {
-        width: 30px;
+        width: 32px;
         height: 2px;
     }
 }
@@ -667,101 +667,8 @@ footer{
 </div>
 
 
-        <div class="product" data-name="Polo Boxy Fit" data-category="polos" data-price="45">
-            <div class="product-img">
-                FOTO DEL POLO BOXY FIT
-            </div>
 
-            <div class="product-info">
-                <h3>Polo Boxy Fit</h3>
-                <p class="category">Polos</p>
-                <p class="price">S/ 45</p>
-                <button onclick="agregar('Polo Boxy Fit',45)">
-                    AGREGAR AL CARRITO
-                </button>
-            </div>
-        </div>
-
-
-        <div class="product" data-name="Pantalón Baggy" data-category="pantalones" data-price="78">
-            <div class="product-img">
-                FOTO DEL PANTALÓN BAGGY
-            </div>
-
-            <div class="product-info">
-                <h3>Pantalón Baggy</h3>
-                <p class="category">Pantalones</p>
-                <p class="price">S/ 78</p>
-                <button onclick="agregar('Pantalón Baggy',78)">
-                    AGREGAR AL CARRITO
-                </button>
-            </div>
-        </div>
-
-
-        <div class="product" data-name="Pantalón Wide Leg" data-category="damas" data-price="85">
-            <div class="product-img">
-                FOTO DEL PANTALÓN WIDE LEG
-            </div>
-
-            <div class="product-info">
-                <h3>Pantalón Wide Leg</h3>
-                <p class="category">Damas</p>
-                <p class="price">S/ 85</p>
-                <button onclick="agregar('Pantalón Wide Leg',85)">
-                    AGREGAR AL CARRITO
-                </button>
-            </div>
-        </div>
-
-
-      <div class="product" data-name="Camisa Boxy Fit" data-category="damas" data-price="85">
-
-    <div class="product-img">
-        <img src="camisa-boxy-fit.jpg.png" alt="Camisa Boxy Fit">
-    </div>
-
-    <div class="product-info">
-        <h3>Camisa Boxy Fit</h3>
-        <p class="category">Camisas</p>
-        <p class="price">S/ 85</p>
-        <p>Talla: S</p>
-
-        <button onclick="agregar('Camisa Boxy Fit',85)">
-            AGREGAR AL CARRITO
-        </button>
-    </div>
-
-</div>  <div class="product" data-name="Zip Hoodie" data-category="hoodies" data-price="95">
-            <div class="product-img">
-                FOTO DEL ZIP HOODIE
-            </div>
-
-            <div class="product-info">
-                <h3>Zip Hoodie</h3>
-                <p class="category">Hoodies</p>
-                <p class="price">S/ 95</p>
-                <button onclick="agregar('Zip Hoodie',95)">
-                    AGREGAR AL CARRITO
-                </button>
-            </div>
-        </div>
-
-
-        <div class="product" data-name="Boxy Fit Dama" data-category="damas" data-price="55">
-            <div class="product-img">
-                FOTO DEL BOXY FIT DAMA
-            </div>
-
-            <div class="product-info">
-                <h3>Boxy Fit Dama</h3>
-                <p class="category">Damas</p>
-                <p class="price">S/ 55</p>
-                <button onclick="agregar('Boxy Fit Dama',55)">
-                    AGREGAR AL CARRITO
-                </button>
-            </div>
-        </div>
+        <!-- Se conserva únicamente Polo Boxy Fit Pedrería. -->
 
     </div>
 
