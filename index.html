@@ -1,519 +1,530 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>YOES | Catálogo</title>
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>YOES | Catálogo</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f5f5f5;color:#171717;font-family:Arial,sans-serif}header{background:#111;color:white;padding:22px 5%;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.logo{font-size:34px;font-weight:900;letter-spacing:2px}header p{margin:4px 0;color:#ddd}.hero{background:#171717;color:white;padding:45px 5%}.hero h1{font-size:clamp(32px,6vw,65px);margin:0 0 10px}.hero p{margin:0;color:#ddd}main{padding:24px 5%}.filters{display:flex;gap:8px;overflow:auto;padding:8px 0 18px}button{cursor:pointer;border:0;border-radius:20px;padding:10px 15px;font-weight:700}.filter{background:#e1e1e1;white-space:nowrap}.filter.active{background:#111;color:#fff}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px}.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px #0001}.card img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#eee}.info{padding:13px}.info small{color:#666}h3{font-size:15px;min-height:38px;margin:8px 0}.info p{font-size:13px;color:#555;min-height:32px}.bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}.bottom strong{font-size:18px}.bottom button{background:#111;color:white}.stock{display:block;margin-top:10px}footer{background:#111;color:#ddd;padding:25px 5%;margin-top:35px}@media(max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card img{aspect-ratio:3/4}.info{padding:9px}}
 .stock{display:none!important}
+
+.variant-picker{margin:12px 0 14px;padding-top:10px;border-top:1px solid #eee}
+.variant-label{font-size:12px;font-weight:700;color:#333;margin:0 0 6px}
+.option-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.option{background:#f0f0f0;color:#222;border:1px solid #d5d5d5;border-radius:7px;padding:7px 10px;font-size:12px;line-height:1.1;min-width:34px}
+.option.selected{background:#111;color:#fff;border-color:#111;box-shadow:0 0 0 1px #111}
+.bottom{flex-wrap:wrap}
+.bottom button{font-size:12px;padding:9px 11px;border-radius:8px}
+@media(max-width:480px){.variant-picker{margin:9px 0 11px}.option-list{gap:4px}.option{padding:6px 8px;font-size:11px}.bottom button{width:100%}}
 </style></head><body><header><div><div class="logo">YOES</div><p>Tu estilo, tu regla, tu marca.</p></div><strong>RIOJA · PERÚ</strong></header><section class="hero"><h1>CATÁLOGO YOES</h1><p>Encuentra tu estilo. Consulta disponibilidad y realiza tu pedido.</p></section><main><div class="filters"><button class="filter active" onclick="filterCat('todos',this)">Todos</button><button class="filter" onclick='filterCat("BLUSA MUJER",this)'>BLUSA MUJER</button><button class="filter" onclick='filterCat("CAMISA VARON",this)'>CAMISA VARON</button><button class="filter" onclick='filterCat("CASACA JEANS MUJER",this)'>CASACA JEANS MUJER</button><button class="filter" onclick='filterCat("CHALECO JEANS MUJER",this)'>CHALECO JEANS MUJER</button><button class="filter" onclick='filterCat("FALDA JEANS MUJER",this)'>FALDA JEANS MUJER</button><button class="filter" onclick='filterCat("PANTALON MUJER",this)'>PANTALON MUJER</button><button class="filter" onclick='filterCat("PANTALON VARON",this)'>PANTALON VARON</button><button class="filter" onclick='filterCat("POLERAS VARON",this)'>POLERAS VARON</button><button class="filter" onclick='filterCat("POLO MUJER",this)'>POLO MUJER</button><button class="filter" onclick='filterCat("POLO NIÑO",this)'>POLO NIÑO</button><button class="filter" onclick='filterCat("POLO VARON",this)'>POLO VARON</button><button class="filter" onclick='filterCat("SHORT FALDA MUJER",this)'>SHORT FALDA MUJER</button><button class="filter" onclick='filterCat("SHORT MUJER",this)'>SHORT MUJER</button><button class="filter" onclick='filterCat("SHORT VARON",this)'>SHORT VARON</button></div><section class="grid" id="grid"><article class="card" data-cat="polo varon">
-      <img src="producto-001.jpg" alt="POLO BOXY FIT VARON - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_001</small>
-      <h3>POLO BOXY FIT VARON - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 35</strong><button type="button" onclick="ask('POLO BOXY FIT VARON - TALLA S - VARON','S/ 35')">Consultar</button></div>
-      <small class="stock">Disponible para consulta</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-002.jpg" alt="POLO OVERSIZE VARON - TALLA M - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_004</small>
-      <h3>POLO OVERSIZE VARON - TALLA M - VARON</h3><p>Talla: M · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 35</strong><button type="button" onclick="ask('POLO OVERSIZE VARON - TALLA M - VARON','S/ 35')">Consultar</button></div>
-      <small class="stock">21 unidades registradas</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-003.jpg" alt="POLO OVERSIZE C/ PEDRERIA VARON - TALLA M - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_007</small>
-      <h3>POLO OVERSIZE C/ PEDRERIA VARON - TALLA M - VARON</h3><p>Talla: M · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 40</strong><button type="button" onclick="ask('POLO OVERSIZE C/ PEDRERIA VARON - TALLA M - VARON','S/ 40')">Consultar</button></div>
-      <small class="stock">6 unidades registradas</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-004.jpg" alt="POLO BOXY FIT C/ PEDRERIA VARON - TALLA M - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_010</small>
-      <h3>POLO BOXY FIT C/ PEDRERIA VARON - TALLA M - VARON</h3><p>Talla: M · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 40</strong><button type="button" onclick="ask('POLO BOXY FIT C/ PEDRERIA VARON - TALLA M - VARON','S/ 40')">Consultar</button></div>
-      <small class="stock">20 unidades registradas</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-005.jpg" alt="POLO OVERSIZE BASICO VARON - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_012</small>
-      <h3>POLO OVERSIZE BASICO VARON - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 35</strong><button type="button" onclick="ask('POLO OVERSIZE BASICO VARON - TALLA S - VARON','S/ 35')">Consultar</button></div>
-      <small class="stock">4 unidades registradas</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-006.jpg" alt="POLO BOXY FIT BASICO VARON - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_016</small>
-      <h3>POLO BOXY FIT BASICO VARON - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 35</strong><button type="button" onclick="ask('POLO BOXY FIT BASICO VARON - TALLA S - VARON','S/ 35')">Consultar</button></div>
-      <small class="stock">Disponible para consulta</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-007.jpg" alt="POLO OVERSIZE ACID WASH - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_020</small>
-      <h3>POLO OVERSIZE ACID WASH - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 35</strong><button type="button" onclick="ask('POLO OVERSIZE ACID WASH - TALLA S - VARON','S/ 35')">Consultar</button></div>
-      <small class="stock">7 unidades registradas</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-008.jpg" alt="POLO ALGODÓN BASICO - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_024</small>
-      <h3>POLO ALGODÓN BASICO - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 25</strong><button type="button" onclick="ask('POLO ALGODÓN BASICO - TALLA S - VARON','S/ 25')">Consultar</button></div>
-      <small class="stock">14 unidades registradas</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-009.jpg" alt="POLO CUELLO CAMISERO ALGODÓN - TALLA M -  VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_028</small>
-      <h3>POLO CUELLO CAMISERO ALGODÓN - TALLA M -  VARON</h3><p>Talla: M · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 30</strong><button type="button" onclick="ask('POLO CUELLO CAMISERO ALGODÓN - TALLA M -  VARON','S/ 30')">Consultar</button></div>
-      <small class="stock">26 unidades registradas</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-010.jpg" alt="POLO CUELLO NERU ALGODÓN - TALLA M -  VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_031</small>
-      <h3>POLO CUELLO NERU ALGODÓN - TALLA M -  VARON</h3><p>Talla: M · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 30</strong><button type="button" onclick="ask('POLO CUELLO NERU ALGODÓN - TALLA M -  VARON','S/ 30')">Consultar</button></div>
-      <small class="stock">9 unidades registradas</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-011.jpg" alt="POLO OVERSIZE FOCALIZADO PEDRERIA - TALLA M - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_033</small>
-      <h3>POLO OVERSIZE FOCALIZADO PEDRERIA - TALLA M - VARON</h3><p>Talla: M · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 45</strong><button type="button" onclick="ask('POLO OVERSIZE FOCALIZADO PEDRERIA - TALLA M - VARON','S/ 45')">Consultar</button></div>
-      <small class="stock">4 unidades registradas</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-012.jpg" alt="POLO MANGA LARGA BOXY FIT - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_034</small>
-      <h3>POLO MANGA LARGA BOXY FIT - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 65</strong><button type="button" onclick="ask('POLO MANGA LARGA BOXY FIT - TALLA S - VARON','S/ 65')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-013.jpg" alt="POLO MANGA CERO - TALLA M - VARON - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_037</small>
-      <h3>POLO MANGA CERO - TALLA M - VARON - VARON</h3><p>Talla: M · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 35</strong><button type="button" onclick="ask('POLO MANGA CERO - TALLA M - VARON - VARON','S/ 35')">Consultar</button></div>
-      <small class="stock">Disponible para consulta</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-014.jpg" alt="POLO DEPORTIVO - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_038</small>
-      <h3>POLO DEPORTIVO - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 18</strong><button type="button" onclick="ask('POLO DEPORTIVO - TALLA S - VARON','S/ 18')">Consultar</button></div>
-      <small class="stock">8 unidades registradas</small></div></article><article class="card" data-cat="polo mujer">
-      <img src="producto-015.jpg" alt="POLO DEPORTIVO - TALLA S - MUJER" loading="lazy">
-      <div class="info"><small>POLO MUJER · YS_041</small>
-      <h3>POLO DEPORTIVO - TALLA S - MUJER</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 18</strong><button type="button" onclick="ask('POLO DEPORTIVO - TALLA S - MUJER','S/ 18')">Consultar</button></div>
-      <small class="stock">6 unidades registradas</small></div></article><article class="card" data-cat="polo varon">
-      <img src="producto-016.jpg" alt="POLO DEPORTIVO CAMISERO - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>POLO VARON · YS_044</small>
-      <h3>POLO DEPORTIVO CAMISERO - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 25</strong><button type="button" onclick="ask('POLO DEPORTIVO CAMISERO - TALLA S - VARON','S/ 25')">Consultar</button></div>
-      <small class="stock">9 unidades registradas</small></div></article><article class="card" data-cat="polo niño">
-      <img src="producto-017.jpg" alt="CONJUNTO DEPORTIVO NIÑO" loading="lazy">
-      <div class="info"><small>POLO NIÑO · YS_048</small>
-      <h3>CONJUNTO DEPORTIVO NIÑO</h3><p>Talla: VARIADO · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 25</strong><button type="button" onclick="ask('CONJUNTO DEPORTIVO NIÑO','S/ 25')">Consultar</button></div>
-      <small class="stock">19 unidades registradas</small></div></article><article class="card" data-cat="camisa varon">
-      <img src="producto-018.jpg" alt="CAMISAS BOXY FIT ESTAMPADO - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>CAMISA VARON · YS_054</small>
-      <h3>CAMISAS BOXY FIT ESTAMPADO - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 85</strong><button type="button" onclick="ask('CAMISAS BOXY FIT ESTAMPADO - TALLA S - VARON','S/ 85')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="camisa varon">
-      <img src="producto-019.jpg" alt="CAMISA LINO - CUELLO NERU - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>CAMISA VARON · YS_056</small>
-      <h3>CAMISA LINO - CUELLO NERU - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 30</strong><button type="button" onclick="ask('CAMISA LINO - CUELLO NERU - TALLA S - VARON','S/ 30')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="camisa varon">
-      <img src="producto-020.jpg" alt="CAMISA LINO M/LARGA - CUELLO NERU - TALLA M - VARON" loading="lazy">
-      <div class="info"><small>CAMISA VARON · YS_061</small>
-      <h3>CAMISA LINO M/LARGA - CUELLO NERU - TALLA M - VARON</h3><p>Talla: M · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 38</strong><button type="button" onclick="ask('CAMISA LINO M/LARGA - CUELLO NERU - TALLA M - VARON','S/ 38')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="camisa varon">
-      <img src="producto-021.jpg" alt="CAMISA CHALIZ - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>CAMISA VARON · YS_063</small>
-      <h3>CAMISA CHALIZ - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 30</strong><button type="button" onclick="ask('CAMISA CHALIZ - TALLA S - VARON','S/ 30')">Consultar</button></div>
-      <small class="stock">19 unidades registradas</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-022.jpg" alt="PANT. JEANS MOM JEANS - TALLA 26 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_067</small>
-      <h3>PANT. JEANS MOM JEANS - TALLA 26 - VARON</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 68</strong><button type="button" onclick="ask('PANT. JEANS MOM JEANS - TALLA 26 - VARON','S/ 68')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-023.jpg" alt="PANT. JEANS REGULAR FIT - TALLA 26 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_072</small>
-      <h3>PANT. JEANS REGULAR FIT - TALLA 26 - VARON</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 70</strong><button type="button" onclick="ask('PANT. JEANS REGULAR FIT - TALLA 26 - VARON','S/ 70')">Consultar</button></div>
-      <small class="stock">Disponible para consulta</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-024.jpg" alt="PANT. JEANS BAGGY FIT - TALLA 26 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_077</small>
-      <h3>PANT. JEANS BAGGY FIT - TALLA 26 - VARON</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 75</strong><button type="button" onclick="ask('PANT. JEANS BAGGY FIT - TALLA 26 - VARON','S/ 75')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-025.jpg" alt="PANT. JEANS SUPER BAGGY - TALLA 26 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_082</small>
-      <h3>PANT. JEANS SUPER BAGGY - TALLA 26 - VARON</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 80</strong><button type="button" onclick="ask('PANT. JEANS SUPER BAGGY - TALLA 26 - VARON','S/ 80')">Consultar</button></div>
-      <small class="stock">Disponible para consulta</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-026.jpg" alt="PANT. CAMUFLADO CARGO - TALLA 26 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_087</small>
-      <h3>PANT. CAMUFLADO CARGO - TALLA 26 - VARON</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 90</strong><button type="button" onclick="ask('PANT. CAMUFLADO CARGO - TALLA 26 - VARON','S/ 90')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-027.jpg" alt="PANT. CAMUFLADO - TALLA 26 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_091</small>
-      <h3>PANT. CAMUFLADO - TALLA 26 - VARON</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 90</strong><button type="button" onclick="ask('PANT. CAMUFLADO - TALLA 26 - VARON','S/ 90')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-028.jpg" alt="PANT. SUPER BAGGY C/PEDRERIA - TALLA 26 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_096</small>
-      <h3>PANT. SUPER BAGGY C/PEDRERIA - TALLA 26 - VARON</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 98</strong><button type="button" onclick="ask('PANT. SUPER BAGGY C/PEDRERIA - TALLA 26 - VARON','S/ 98')">Consultar</button></div>
-      <small class="stock">4 unidades registradas</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-029.jpg" alt="PANT. SUPER BAGGY ESTAMPADO - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_101</small>
-      <h3>PANT. SUPER BAGGY ESTAMPADO - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 90</strong><button type="button" onclick="ask('PANT. SUPER BAGGY ESTAMPADO - TALLA 28 - VARON','S/ 90')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-030.jpg" alt="PANT. JEANS SEMI PITILLO STRESH - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_105</small>
-      <h3>PANT. JEANS SEMI PITILLO STRESH - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 60</strong><button type="button" onclick="ask('PANT. JEANS SEMI PITILLO STRESH - TALLA 28 - VARON','S/ 60')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-031.jpg" alt="PANT. DRILLS SEMI PITILLO STRESH - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_109</small>
-      <h3>PANT. DRILLS SEMI PITILLO STRESH - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 60</strong><button type="button" onclick="ask('PANT. DRILLS SEMI PITILLO STRESH - TALLA 28 - VARON','S/ 60')">Consultar</button></div>
-      <small class="stock">6 unidades registradas</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-032.jpg" alt="PANT. JEANS PIONIER CLASICO - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_113</small>
-      <h3>PANT. JEANS PIONIER CLASICO - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 60</strong><button type="button" onclick="ask('PANT. JEANS PIONIER CLASICO - TALLA 28 - VARON','S/ 60')">Consultar</button></div>
-      <small class="stock">4 unidades registradas</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-033.jpg" alt="PANT. DRILLS CLASICO RIGIDO - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_118</small>
-      <h3>PANT. DRILLS CLASICO RIGIDO - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 60</strong><button type="button" onclick="ask('PANT. DRILLS CLASICO RIGIDO - TALLA 28 - VARON','S/ 60')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="pantalon varon">
-      <img src="producto-034.jpg" alt="PANT. JEANS CARGO - TALLA 30 - VARON" loading="lazy">
-      <div class="info"><small>PANTALON VARON · YS_125</small>
-      <h3>PANT. JEANS CARGO - TALLA 30 - VARON</h3><p>Talla: 30 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 65</strong><button type="button" onclick="ask('PANT. JEANS CARGO - TALLA 30 - VARON','S/ 65')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-035.jpg" alt="SHORT JEANS CARGO - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_132</small>
-      <h3>SHORT JEANS CARGO - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 60</strong><button type="button" onclick="ask('SHORT JEANS CARGO - TALLA 28 - VARON','S/ 60')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-036.jpg" alt="SHORT JEANS EXTRA BAGGY - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_136</small>
-      <h3>SHORT JEANS EXTRA BAGGY - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 65</strong><button type="button" onclick="ask('SHORT JEANS EXTRA BAGGY - TALLA 28 - VARON','S/ 65')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-037.jpg" alt="SHORT JEANS ESTAMPADO - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_141</small>
-      <h3>SHORT JEANS ESTAMPADO - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 60</strong><button type="button" onclick="ask('SHORT JEANS ESTAMPADO - TALLA 28 - VARON','S/ 60')">Consultar</button></div>
-      <small class="stock">4 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-038.jpg" alt="SHORT JEANS BORDADO - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_145</small>
-      <h3>SHORT JEANS BORDADO - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 65</strong><button type="button" onclick="ask('SHORT JEANS BORDADO - TALLA 28 - VARON','S/ 65')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-039.jpg" alt="SHORT YORK LASER 1 - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_150</small>
-      <h3>SHORT YORK LASER 1 - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 85</strong><button type="button" onclick="ask('SHORT YORK LASER 1 - TALLA 28 - VARON','S/ 85')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-040.jpg" alt="SHORT YORK LASER 2 - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_154</small>
-      <h3>SHORT YORK LASER 2 - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 85</strong><button type="button" onclick="ask('SHORT YORK LASER 2 - TALLA 28 - VARON','S/ 85')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-041.jpg" alt="SHORT YORK COLOR ENTERO - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_158</small>
-      <h3>SHORT YORK COLOR ENTERO - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 85</strong><button type="button" onclick="ask('SHORT YORK COLOR ENTERO - TALLA 28 - VARON','S/ 85')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-042.jpg" alt="SHORT YORK CON LINEA - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_162</small>
-      <h3>SHORT YORK CON LINEA - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 85</strong><button type="button" onclick="ask('SHORT YORK CON LINEA - TALLA 28 - VARON','S/ 85')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-043.jpg" alt="SHORT YORK VAN PIERRE - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_165</small>
-      <h3>SHORT YORK VAN PIERRE - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 85</strong><button type="button" onclick="ask('SHORT YORK VAN PIERRE - TALLA 28 - VARON','S/ 85')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-044.jpg" alt="SHORT YORK CON PEDRERIA - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_168</small>
-      <h3>SHORT YORK CON PEDRERIA - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 90</strong><button type="button" onclick="ask('SHORT YORK CON PEDRERIA - TALLA 28 - VARON','S/ 90')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-045.jpg" alt="SHORT YORK SEMI PEDRERIA - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_172</small>
-      <h3>SHORT YORK SEMI PEDRERIA - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 90</strong><button type="button" onclick="ask('SHORT YORK SEMI PEDRERIA - TALLA 28 - VARON','S/ 90')">Consultar</button></div>
-      <small class="stock">4 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-046.jpg" alt="YORK S/ ESTAMPADO ELEMENT - TALLA 26 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_176</small>
-      <h3>YORK S/ ESTAMPADO ELEMENT - TALLA 26 - VARON</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 78</strong><button type="button" onclick="ask('YORK S/ ESTAMPADO ELEMENT - TALLA 26 - VARON','S/ 78')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-047.jpg" alt="SHORT CLASICO - TALLA 26 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_180</small>
-      <h3>SHORT CLASICO - TALLA 26 - VARON</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 50</strong><button type="button" onclick="ask('SHORT CLASICO - TALLA 26 - VARON','S/ 50')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-048.jpg" alt="SHORT STRESH - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_187</small>
-      <h3>SHORT STRESH - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 65</strong><button type="button" onclick="ask('SHORT STRESH - TALLA 28 - VARON','S/ 65')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-049.jpg" alt="SHORT RASGADO CLASICO - TALLA 26 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_191</small>
-      <h3>SHORT RASGADO CLASICO - TALLA 26 - VARON</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 50</strong><button type="button" onclick="ask('SHORT RASGADO CLASICO - TALLA 26 - VARON','S/ 50')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-050.jpg" alt="SHORT DRILLS CLASICO - TALLA 26 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_199</small>
-      <h3>SHORT DRILLS CLASICO - TALLA 26 - VARON</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 50</strong><button type="button" onclick="ask('SHORT DRILLS CLASICO - TALLA 26 - VARON','S/ 50')">Consultar</button></div>
-      <small class="stock">Disponible para consulta</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-051.jpg" alt="SHORT TAFETA - TALLA 28 - VARON" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_207</small>
-      <h3>SHORT TAFETA - TALLA 28 - VARON</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 55</strong><button type="button" onclick="ask('SHORT TAFETA - TALLA 28 - VARON','S/ 55')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="short varon">
-      <img src="producto-052.jpg" alt="SHORT JEANS ESTAMPADO - TALLA 10 - NIÑO" loading="lazy">
-      <div class="info"><small>SHORT VARON · YS_216</small>
-      <h3>SHORT JEANS ESTAMPADO - TALLA 10 - NIÑO</h3><p>Talla: 10 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 48</strong><button type="button" onclick="ask('SHORT JEANS ESTAMPADO - TALLA 10 - NIÑO','S/ 48')">Consultar</button></div>
-      <small class="stock">6 unidades registradas</small></div></article><article class="card" data-cat="polo niño">
-      <img src="producto-053.jpg" alt="POLO OVERSIZE - TALLA 14 - NIÑO" loading="lazy">
-      <div class="info"><small>POLO NIÑO · YS_220</small>
-      <h3>POLO OVERSIZE - TALLA 14 - NIÑO</h3><p>Talla: 14 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 30</strong><button type="button" onclick="ask('POLO OVERSIZE - TALLA 14 - NIÑO','S/ 30')">Consultar</button></div>
-      <small class="stock">6 unidades registradas</small></div></article><article class="card" data-cat="poleras varon">
-      <img src="producto-054.jpg" alt="POLERA FRANELA REACTIVA- TALLA S - VARON" loading="lazy">
-      <div class="info"><small>POLERAS VARON · YS_222</small>
-      <h3>POLERA FRANELA REACTIVA- TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 45</strong><button type="button" onclick="ask('POLERA FRANELA REACTIVA- TALLA S - VARON','S/ 45')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="poleras varon">
-      <img src="producto-055.jpg" alt="POLERA BOXY FIT C/PEDRERIA - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>POLERAS VARON · YS_223</small>
-      <h3>POLERA BOXY FIT C/PEDRERIA - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 90</strong><button type="button" onclick="ask('POLERA BOXY FIT C/PEDRERIA - TALLA S - VARON','S/ 90')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="poleras varon">
-      <img src="producto-056.jpg" alt="HODDIES COLOR ENTERO - TALLA S - VARON" loading="lazy">
-      <div class="info"><small>POLERAS VARON · YS_224</small>
-      <h3>HODDIES COLOR ENTERO - TALLA S - VARON</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 80</strong><button type="button" onclick="ask('HODDIES COLOR ENTERO - TALLA S - VARON','S/ 80')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="poleras varon">
-      <img src="producto-057.jpg" alt="POLERA BOXI FIT C/ESTAMPADO - TALLA M - VARON" loading="lazy">
-      <div class="info"><small>POLERAS VARON · YS_227</small>
-      <h3>POLERA BOXI FIT C/ESTAMPADO - TALLA M - VARON</h3><p>Talla: M · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 90</strong><button type="button" onclick="ask('POLERA BOXI FIT C/ESTAMPADO - TALLA M - VARON','S/ 90')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="poleras varon">
-      <img src="producto-058.jpg" alt="POLERA CUELLO REDONDO - TALLA ESTÁNDAR - VARON" loading="lazy">
-      <div class="info"><small>POLERAS VARON · YS_229</small>
-      <h3>POLERA CUELLO REDONDO - TALLA ESTÁNDAR - VARON</h3><p>Talla: STANDAR · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 75</strong><button type="button" onclick="ask('POLERA CUELLO REDONDO - TALLA ESTÁNDAR - VARON','S/ 75')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="poleras varon">
-      <img src="producto-059.jpg" alt="POLERA FOCALIZADO C/CAPUCHA - TALLA M - VARON" loading="lazy">
-      <div class="info"><small>POLERAS VARON · YS_230</small>
-      <h3>POLERA FOCALIZADO C/CAPUCHA - TALLA M - VARON</h3><p>Talla: M · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 75</strong><button type="button" onclick="ask('POLERA FOCALIZADO C/CAPUCHA - TALLA M - VARON','S/ 75')">Consultar</button></div>
-      <small class="stock">4 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-060.jpg" alt="PANT. WIDE LEG RIGIDO - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_231</small>
-      <h3>PANT. WIDE LEG RIGIDO - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 65</strong><button type="button" onclick="ask('PANT. WIDE LEG RIGIDO - TALLA 28 - MUJER','S/ 65')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-061.jpg" alt="PANT. EXTRA PALAZO YTO - TALLA 26 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_235</small>
-      <h3>PANT. EXTRA PALAZO YTO - TALLA 26 - MUJER</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 70</strong><button type="button" onclick="ask('PANT. EXTRA PALAZO YTO - TALLA 26 - MUJER','S/ 70')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-062.jpg" alt="PANT. WIDE LEG CONFORT - TALLA 26 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_240</small>
-      <h3>PANT. WIDE LEG CONFORT - TALLA 26 - MUJER</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 68</strong><button type="button" onclick="ask('PANT. WIDE LEG CONFORT - TALLA 26 - MUJER','S/ 68')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-063.jpg" alt="PANT. PETIT - CONFORT - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_247</small>
-      <h3>PANT. PETIT - CONFORT - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 68</strong><button type="button" onclick="ask('PANT. PETIT - CONFORT - TALLA 28 - MUJER','S/ 68')">Consultar</button></div>
-      <small class="stock">Disponible para consulta</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-064.jpg" alt="PANT. FLARE PETIT BOLSILLO TAPA KARDIERS - TALLA 26 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_251</small>
-      <h3>PANT. FLARE PETIT BOLSILLO TAPA KARDIERS - TALLA 26 - MUJER</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 75</strong><button type="button" onclick="ask('PANT. FLARE PETIT BOLSILLO TAPA KARDIERS - TALLA 26 - MUJER','S/ 75')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-065.jpg" alt="PANT.  PETIT BOLSILLO TAPA -  TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_255</small>
-      <h3>PANT.  PETIT BOLSILLO TAPA -  TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 70</strong><button type="button" onclick="ask('PANT.  PETIT BOLSILLO TAPA -  TALLA 28 - MUJER','S/ 70')">Consultar</button></div>
-      <small class="stock">Disponible para consulta</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-066.jpg" alt="PANT. PALAZO CONFORT KP - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_260</small>
-      <h3>PANT. PALAZO CONFORT KP - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 75</strong><button type="button" onclick="ask('PANT. PALAZO CONFORT KP - TALLA 28 - MUJER','S/ 75')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-067.jpg" alt="PANT. FLARE CONFORT - TALLA 26 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_264</small>
-      <h3>PANT. FLARE CONFORT - TALLA 26 - MUJER</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 70</strong><button type="button" onclick="ask('PANT. FLARE CONFORT - TALLA 26 - MUJER','S/ 70')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-068.jpg" alt="PANT. PETIT C/ CORREA CONFORT - TALLA 34 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_269</small>
-      <h3>PANT. PETIT C/ CORREA CONFORT - TALLA 34 - MUJER</h3><p>Talla: 34 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 75</strong><button type="button" onclick="ask('PANT. PETIT C/ CORREA CONFORT - TALLA 34 - MUJER','S/ 75')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-069.jpg" alt="PANT. PETIT CONFORT - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_270</small>
-      <h3>PANT. PETIT CONFORT - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 68</strong><button type="button" onclick="ask('PANT. PETIT CONFORT - TALLA 28 - MUJER','S/ 68')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-070.jpg" alt="PANT. PETIT CONFORT BOLSILLO PEQUEÑO - TALLA 26 -MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_274</small>
-      <h3>PANT. PETIT CONFORT BOLSILLO PEQUEÑO - TALLA 26 -MUJER</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 75</strong><button type="button" onclick="ask('PANT. PETIT CONFORT BOLSILLO PEQUEÑO - TALLA 26 -MUJER','S/ 75')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-071.jpg" alt="PANT. SKINNY - TALLA 26 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_279</small>
-      <h3>PANT. SKINNY - TALLA 26 - MUJER</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 55</strong><button type="button" onclick="ask('PANT. SKINNY - TALLA 26 - MUJER','S/ 55')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-072.jpg" alt="PANT. EXTRA BAGGY REGULABLE - TALLA 26 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_284</small>
-      <h3>PANT. EXTRA BAGGY REGULABLE - TALLA 26 - MUJER</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 70</strong><button type="button" onclick="ask('PANT. EXTRA BAGGY REGULABLE - TALLA 26 - MUJER','S/ 70')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-073.jpg" alt="PANT. SIRENA STRESH - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_287</small>
-      <h3>PANT. SIRENA STRESH - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 60</strong><button type="button" onclick="ask('PANT. SIRENA STRESH - TALLA 28 - MUJER','S/ 60')">Consultar</button></div>
-      <small class="stock">5 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-074.jpg" alt="PANT. BAGGY COLORES YTO - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_290</small>
-      <h3>PANT. BAGGY COLORES YTO - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 68</strong><button type="button" onclick="ask('PANT. BAGGY COLORES YTO - TALLA 28 - MUJER','S/ 68')">Consultar</button></div>
-      <small class="stock">4 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-075.jpg" alt="PANT. SKINNY BRILLO - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_294</small>
-      <h3>PANT. SKINNY BRILLO - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 60</strong><button type="button" onclick="ask('PANT. SKINNY BRILLO - TALLA 28 - MUJER','S/ 60')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="pantalon mujer">
-      <img src="producto-076.jpg" alt="PANT. MINI PETIT - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>PANTALON MUJER · YS_297</small>
-      <h3>PANT. MINI PETIT - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 70</strong><button type="button" onclick="ask('PANT. MINI PETIT - TALLA 28 - MUJER','S/ 70')">Consultar</button></div>
-      <small class="stock">Disponible para consulta</small></div></article><article class="card" data-cat="short falda mujer">
-      <img src="producto-077.jpg" alt="SHORT FALDA COLORES YTO - TALLA 34 - MUJER" loading="lazy">
-      <div class="info"><small>SHORT FALDA MUJER · YS_324</small>
-      <h3>SHORT FALDA COLORES YTO - TALLA 34 - MUJER</h3><p>Talla: 34 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 58</strong><button type="button" onclick="ask('SHORT FALDA COLORES YTO - TALLA 34 - MUJER','S/ 58')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short falda mujer">
-      <img src="producto-078.jpg" alt="SHORT FALDA FLECO - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>SHORT FALDA MUJER · YS_325</small>
-      <h3>SHORT FALDA FLECO - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 58</strong><button type="button" onclick="ask('SHORT FALDA FLECO - TALLA 28 - MUJER','S/ 58')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="short falda mujer">
-      <img src="producto-079.jpg" alt="SHORT FALDA CARGO STRESH - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>SHORT FALDA MUJER · YS_329</small>
-      <h3>SHORT FALDA CARGO STRESH - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 48</strong><button type="button" onclick="ask('SHORT FALDA CARGO STRESH - TALLA 28 - MUJER','S/ 48')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short falda mujer">
-      <img src="producto-080.jpg" alt="SHORT FALDA RIGIDO - TALLA 28 -MUJER" loading="lazy">
-      <div class="info"><small>SHORT FALDA MUJER · YS_333</small>
-      <h3>SHORT FALDA RIGIDO - TALLA 28 -MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 58</strong><button type="button" onclick="ask('SHORT FALDA RIGIDO - TALLA 28 -MUJER','S/ 58')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short falda mujer">
-      <img src="producto-081.jpg" alt="SHORT FALDA CONFORT - TALLA 34 -MUJER" loading="lazy">
-      <div class="info"><small>SHORT FALDA MUJER · YS_334</small>
-      <h3>SHORT FALDA CONFORT - TALLA 34 -MUJER</h3><p>Talla: 34 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 58</strong><button type="button" onclick="ask('SHORT FALDA CONFORT - TALLA 34 -MUJER','S/ 58')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short falda mujer">
-      <img src="producto-082.jpg" alt="SHORT FALDA ESTRELLA - TALLA 28 -MUJER" loading="lazy">
-      <div class="info"><small>SHORT FALDA MUJER · YS_335</small>
-      <h3>SHORT FALDA ESTRELLA - TALLA 28 -MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 48</strong><button type="button" onclick="ask('SHORT FALDA ESTRELLA - TALLA 28 -MUJER','S/ 48')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="falda jeans mujer">
-      <img src="producto-083.jpg" alt="FALDA JEANS CONFORT - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>FALDA JEANS MUJER · YS_336</small>
-      <h3>FALDA JEANS CONFORT - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 48</strong><button type="button" onclick="ask('FALDA JEANS CONFORT - TALLA 28 - MUJER','S/ 48')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="short mujer">
-      <img src="producto-084.jpg" alt="SHORT COLORES YTO - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>SHORT MUJER · YS_340</small>
-      <h3>SHORT COLORES YTO - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 48</strong><button type="button" onclick="ask('SHORT COLORES YTO - TALLA 28 - MUJER','S/ 48')">Consultar</button></div>
-      <small class="stock">6 unidades registradas</small></div></article><article class="card" data-cat="short mujer">
-      <img src="producto-085.jpg" alt="SHORT RIGIDO - TALLA 26 - MUJER" loading="lazy">
-      <div class="info"><small>SHORT MUJER · YS_344</small>
-      <h3>SHORT RIGIDO - TALLA 26 - MUJER</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 48</strong><button type="button" onclick="ask('SHORT RIGIDO - TALLA 26 - MUJER','S/ 48')">Consultar</button></div>
-      <small class="stock">6 unidades registradas</small></div></article><article class="card" data-cat="short mujer">
-      <img src="producto-086.jpg" alt="SHORT BEIKER RIGIDO - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>SHORT MUJER · YS_348</small>
-      <h3>SHORT BEIKER RIGIDO - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 55</strong><button type="button" onclick="ask('SHORT BEIKER RIGIDO - TALLA 28 - MUJER','S/ 55')">Consultar</button></div>
-      <small class="stock">Disponible para consulta</small></div></article><article class="card" data-cat="short mujer">
-      <img src="producto-087.jpg" alt="SHORT STRESH - TALLA 26 - MUJER" loading="lazy">
-      <div class="info"><small>SHORT MUJER · YS_352</small>
-      <h3>SHORT STRESH - TALLA 26 - MUJER</h3><p>Talla: 26 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 48</strong><button type="button" onclick="ask('SHORT STRESH - TALLA 26 - MUJER','S/ 48')">Consultar</button></div>
-      <small class="stock">6 unidades registradas</small></div></article><article class="card" data-cat="short mujer">
-      <img src="producto-088.jpg" alt="SHORT TAFETA - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>SHORT MUJER · YS_356</small>
-      <h3>SHORT TAFETA - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 48</strong><button type="button" onclick="ask('SHORT TAFETA - TALLA 28 - MUJER','S/ 48')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="short mujer">
-      <img src="producto-089.jpg" alt="SHORT JEAN CAHETEROS - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>SHORT MUJER · YS_360</small>
-      <h3>SHORT JEAN CAHETEROS - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 48</strong><button type="button" onclick="ask('SHORT JEAN CAHETEROS - TALLA 28 - MUJER','S/ 48')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="short mujer">
-      <img src="producto-090.jpg" alt="SHORT CONFORT KADIERS - TALLA 34 - MUJER" loading="lazy">
-      <div class="info"><small>SHORT MUJER · YS_364</small>
-      <h3>SHORT CONFORT KADIERS - TALLA 34 - MUJER</h3><p>Talla: 34 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 48</strong><button type="button" onclick="ask('SHORT CONFORT KADIERS - TALLA 34 - MUJER','S/ 48')">Consultar</button></div>
-      <small class="stock">3 unidades registradas</small></div></article><article class="card" data-cat="short mujer">
-      <img src="producto-091.jpg" alt="SHORT CONFORT 2 BOTONES - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>SHORT MUJER · YS_366</small>
-      <h3>SHORT CONFORT 2 BOTONES - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 48</strong><button type="button" onclick="ask('SHORT CONFORT 2 BOTONES - TALLA 28 - MUJER','S/ 48')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="polo mujer">
-      <img src="producto-092.jpg" alt="POLO SUPLEX - TALLA ESTÁNDAR - MUJER" loading="lazy">
-      <div class="info"><small>POLO MUJER · YS_370</small>
-      <h3>POLO SUPLEX - TALLA ESTÁNDAR - MUJER</h3><p>Talla: ESTÁNDAR · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 15</strong><button type="button" onclick="ask('POLO SUPLEX - TALLA ESTÁNDAR - MUJER','S/ 15')">Consultar</button></div>
-      <small class="stock">30 unidades registradas</small></div></article><article class="card" data-cat="polo mujer">
-      <img src="producto-093.jpg" alt="BODY SUPLEX - ESTÁNDAR - MUJER" loading="lazy">
-      <div class="info"><small>POLO MUJER · YS_372</small>
-      <h3>BODY SUPLEX - ESTÁNDAR - MUJER</h3><p>Talla: ESTÁNDAR · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 15</strong><button type="button" onclick="ask('BODY SUPLEX - ESTÁNDAR - MUJER','S/ 15')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="polo mujer">
-      <img src="producto-094.jpg" alt="POLO OVERSIZE ACID WASH - TALLA S - MUJER" loading="lazy">
-      <div class="info"><small>POLO MUJER · YS_373</small>
-      <h3>POLO OVERSIZE ACID WASH - TALLA S - MUJER</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 35</strong><button type="button" onclick="ask('POLO OVERSIZE ACID WASH - TALLA S - MUJER','S/ 35')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="polo mujer">
-      <img src="producto-095.jpg" alt="POLO CLASICO PIMA - TALLA S - MUJER" loading="lazy">
-      <div class="info"><small>POLO MUJER · YS_376</small>
-      <h3>POLO CLASICO PIMA - TALLA S - MUJER</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 33</strong><button type="button" onclick="ask('POLO CLASICO PIMA - TALLA S - MUJER','S/ 33')">Consultar</button></div>
-      <small class="stock">12 unidades registradas</small></div></article><article class="card" data-cat="polo mujer">
-      <img src="producto-096.jpg" alt="POLO OVERSIZE PIMA - TALLA S - MUJER" loading="lazy">
-      <div class="info"><small>POLO MUJER · YS_379</small>
-      <h3>POLO OVERSIZE PIMA - TALLA S - MUJER</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 33</strong><button type="button" onclick="ask('POLO OVERSIZE PIMA - TALLA S - MUJER','S/ 33')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article><article class="card" data-cat="polo mujer">
-      <img src="producto-097.jpg" alt="POLO BOXY FIT - TALLA S - MUJER" loading="lazy">
-      <div class="info"><small>POLO MUJER · YS_382</small>
-      <h3>POLO BOXY FIT - TALLA S - MUJER</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 33</strong><button type="button" onclick="ask('POLO BOXY FIT - TALLA S - MUJER','S/ 33')">Consultar</button></div>
-      <small class="stock">5 unidades registradas</small></div></article><article class="card" data-cat="polo mujer">
-      <img src="producto-098.jpg" alt="POLO BOXY FIT C/PEDRERIA PIMA - TALLA S - MUJER" loading="lazy">
-      <div class="info"><small>POLO MUJER · YS_385</small>
-      <h3>POLO BOXY FIT C/PEDRERIA PIMA - TALLA S - MUJER</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 33</strong><button type="button" onclick="ask('POLO BOXY FIT C/PEDRERIA PIMA - TALLA S - MUJER','S/ 33')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="blusa mujer">
-      <img src="producto-099.jpg" alt="BLUSA SEDA FRANCESA - TALLA STANDAR - MUJER" loading="lazy">
-      <div class="info"><small>BLUSA MUJER · YS_388</small>
-      <h3>BLUSA SEDA FRANCESA - TALLA STANDAR - MUJER</h3><p>Talla: ESTÁNDAR · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 40</strong><button type="button" onclick="ask('BLUSA SEDA FRANCESA - TALLA STANDAR - MUJER','S/ 40')">Consultar</button></div>
-      <small class="stock">11 unidades registradas</small></div></article><article class="card" data-cat="blusa mujer">
-      <img src="producto-100.jpg" alt="BLUSA SEDA FRANCESA MANGA LARGA - TALLA S - MUJER" loading="lazy">
-      <div class="info"><small>BLUSA MUJER · YS_390</small>
-      <h3>BLUSA SEDA FRANCESA MANGA LARGA - TALLA S - MUJER</h3><p>Talla: S · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 40</strong><button type="button" onclick="ask('BLUSA SEDA FRANCESA MANGA LARGA - TALLA S - MUJER','S/ 40')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="casaca jeans mujer">
-      <img src="producto-101.jpg" alt="CASACA JEANS - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>CASACA JEANS MUJER · YS_392</small>
-      <h3>CASACA JEANS - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 65</strong><button type="button" onclick="ask('CASACA JEANS - TALLA 28 - MUJER','S/ 65')">Consultar</button></div>
-      <small class="stock">1 unidades registradas</small></div></article><article class="card" data-cat="chaleco jeans mujer">
-      <img src="producto-102.jpg" alt="CHALECO JEANS - TALLA 28 - MUJER" loading="lazy">
-      <div class="info"><small>CHALECO JEANS MUJER · YS_394</small>
-      <h3>CHALECO JEANS - TALLA 28 - MUJER</h3><p>Talla: 28 · Color: VARIADO</p>
-      <div class="bottom"><strong>S/ 40</strong><button type="button" onclick="ask('CHALECO JEANS - TALLA 28 - MUJER','S/ 40')">Consultar</button></div>
-      <small class="stock">2 unidades registradas</small></div></article></section></main><footer><b>YOES</b><p>Tu estilo, tu regla, tu marca. · Rioja, Perú</p></footer>
+<img alt="POLO BOXY FIT VARON - TALLA S - VARON" loading="lazy" src="producto-001.jpg"/>
+<div class="info"><small>POLO VARON · YS_001</small>
+<h3>POLO BOXY FIT VARON - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 35</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO OVERSIZE VARON - TALLA M - VARON" loading="lazy" src="producto-002.jpg"/>
+<div class="info"><small>POLO VARON · YS_004</small>
+<h3>POLO OVERSIZE VARON - TALLA M - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 35</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO OVERSIZE C/ PEDRERIA VARON - TALLA M - VARON" loading="lazy" src="producto-003.jpg"/>
+<div class="info"><small>POLO VARON · YS_007</small>
+<h3>POLO OVERSIZE C/ PEDRERIA VARON - TALLA M - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 40</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO BOXY FIT C/ PEDRERIA VARON - TALLA M - VARON" loading="lazy" src="producto-004.jpg"/>
+<div class="info"><small>POLO VARON · YS_010</small>
+<h3>POLO BOXY FIT C/ PEDRERIA VARON - TALLA M - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 40</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO OVERSIZE BASICO VARON - TALLA S - VARON" loading="lazy" src="producto-005.jpg"/>
+<div class="info"><small>POLO VARON · YS_012</small>
+<h3>POLO OVERSIZE BASICO VARON - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 35</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO BOXY FIT BASICO VARON - TALLA S - VARON" loading="lazy" src="producto-006.jpg"/>
+<div class="info"><small>POLO VARON · YS_016</small>
+<h3>POLO BOXY FIT BASICO VARON - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 35</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO OVERSIZE ACID WASH - TALLA S - VARON" loading="lazy" src="producto-007.jpg"/>
+<div class="info"><small>POLO VARON · YS_020</small>
+<h3>POLO OVERSIZE ACID WASH - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 35</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO ALGODÓN BASICO - TALLA S - VARON" loading="lazy" src="producto-008.jpg"/>
+<div class="info"><small>POLO VARON · YS_024</small>
+<h3>POLO ALGODÓN BASICO - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 25</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO CUELLO CAMISERO ALGODÓN - TALLA M -  VARON" loading="lazy" src="producto-009.jpg"/>
+<div class="info"><small>POLO VARON · YS_028</small>
+<h3>POLO CUELLO CAMISERO ALGODÓN - TALLA M -  VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 30</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO CUELLO NERU ALGODÓN - TALLA M -  VARON" loading="lazy" src="producto-010.jpg"/>
+<div class="info"><small>POLO VARON · YS_031</small>
+<h3>POLO CUELLO NERU ALGODÓN - TALLA M -  VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 30</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO OVERSIZE FOCALIZADO PEDRERIA - TALLA M - VARON" loading="lazy" src="producto-011.jpg"/>
+<div class="info"><small>POLO VARON · YS_033</small>
+<h3>POLO OVERSIZE FOCALIZADO PEDRERIA - TALLA M - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 45</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO MANGA LARGA BOXY FIT - TALLA S - VARON" loading="lazy" src="producto-012.jpg"/>
+<div class="info"><small>POLO VARON · YS_034</small>
+<h3>POLO MANGA LARGA BOXY FIT - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 65</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO MANGA CERO - TALLA M - VARON - VARON" loading="lazy" src="producto-013.jpg"/>
+<div class="info"><small>POLO VARON · YS_037</small>
+<h3>POLO MANGA CERO - TALLA M - VARON - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 35</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO DEPORTIVO - TALLA S - VARON" loading="lazy" src="producto-014.jpg"/>
+<div class="info"><small>POLO VARON · YS_038</small>
+<h3>POLO DEPORTIVO - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 18</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo mujer">
+<img alt="POLO DEPORTIVO - TALLA S - MUJER" loading="lazy" src="producto-015.jpg"/>
+<div class="info"><small>POLO MUJER · YS_041</small>
+<h3>POLO DEPORTIVO - TALLA S - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 18</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo varon">
+<img alt="POLO DEPORTIVO CAMISERO - TALLA S - VARON" loading="lazy" src="producto-016.jpg"/>
+<div class="info"><small>POLO VARON · YS_044</small>
+<h3>POLO DEPORTIVO CAMISERO - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 25</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo niño">
+<img alt="CONJUNTO DEPORTIVO NIÑO" loading="lazy" src="producto-017.jpg"/>
+<div class="info"><small>POLO NIÑO · YS_048</small>
+<h3>CONJUNTO DEPORTIVO NIÑO</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 25</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="camisa varon">
+<img alt="CAMISAS BOXY FIT ESTAMPADO - TALLA S - VARON" loading="lazy" src="producto-018.jpg"/>
+<div class="info"><small>CAMISA VARON · YS_054</small>
+<h3>CAMISAS BOXY FIT ESTAMPADO - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 85</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="camisa varon">
+<img alt="CAMISA LINO - CUELLO NERU - TALLA S - VARON" loading="lazy" src="producto-019.jpg"/>
+<div class="info"><small>CAMISA VARON · YS_056</small>
+<h3>CAMISA LINO - CUELLO NERU - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 30</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="camisa varon">
+<img alt="CAMISA LINO M/LARGA - CUELLO NERU - TALLA M - VARON" loading="lazy" src="producto-020.jpg"/>
+<div class="info"><small>CAMISA VARON · YS_061</small>
+<h3>CAMISA LINO M/LARGA - CUELLO NERU - TALLA M - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 38</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="camisa varon">
+<img alt="CAMISA CHALIZ - TALLA S - VARON" loading="lazy" src="producto-021.jpg"/>
+<div class="info"><small>CAMISA VARON · YS_063</small>
+<h3>CAMISA CHALIZ - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 30</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. JEANS MOM JEANS - TALLA 26 - VARON" loading="lazy" src="producto-022.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_067</small>
+<h3>PANT. JEANS MOM JEANS - TALLA 26 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 68</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. JEANS REGULAR FIT - TALLA 26 - VARON" loading="lazy" src="producto-023.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_072</small>
+<h3>PANT. JEANS REGULAR FIT - TALLA 26 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="35" onclick="selectOption(this)" type="button">35</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 70</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. JEANS BAGGY FIT - TALLA 26 - VARON" loading="lazy" src="producto-024.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_077</small>
+<h3>PANT. JEANS BAGGY FIT - TALLA 26 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 75</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. JEANS SUPER BAGGY - TALLA 26 - VARON" loading="lazy" src="producto-025.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_082</small>
+<h3>PANT. JEANS SUPER BAGGY - TALLA 26 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="37" onclick="selectOption(this)" type="button">37</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 80</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. CAMUFLADO CARGO - TALLA 26 - VARON" loading="lazy" src="producto-026.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_087</small>
+<h3>PANT. CAMUFLADO CARGO - TALLA 26 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="38" onclick="selectOption(this)" type="button">38</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 90</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. CAMUFLADO - TALLA 26 - VARON" loading="lazy" src="producto-027.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_091</small>
+<h3>PANT. CAMUFLADO - TALLA 26 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="39" onclick="selectOption(this)" type="button">39</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 90</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. SUPER BAGGY C/PEDRERIA - TALLA 26 - VARON" loading="lazy" src="producto-028.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_096</small>
+<h3>PANT. SUPER BAGGY C/PEDRERIA - TALLA 26 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="40" onclick="selectOption(this)" type="button">40</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 98</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. SUPER BAGGY ESTAMPADO - TALLA 28 - VARON" loading="lazy" src="producto-029.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_101</small>
+<h3>PANT. SUPER BAGGY ESTAMPADO - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="41" onclick="selectOption(this)" type="button">41</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 90</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. JEANS SEMI PITILLO STRESH - TALLA 28 - VARON" loading="lazy" src="producto-030.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_105</small>
+<h3>PANT. JEANS SEMI PITILLO STRESH - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="42" onclick="selectOption(this)" type="button">42</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 60</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. DRILLS SEMI PITILLO STRESH - TALLA 28 - VARON" loading="lazy" src="producto-031.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_109</small>
+<h3>PANT. DRILLS SEMI PITILLO STRESH - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="43" onclick="selectOption(this)" type="button">43</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 60</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. JEANS PIONIER CLASICO - TALLA 28 - VARON" loading="lazy" src="producto-032.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_113</small>
+<h3>PANT. JEANS PIONIER CLASICO - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="44" onclick="selectOption(this)" type="button">44</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 60</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. DRILLS CLASICO RIGIDO - TALLA 28 - VARON" loading="lazy" src="producto-033.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_118</small>
+<h3>PANT. DRILLS CLASICO RIGIDO - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="45" onclick="selectOption(this)" type="button">45</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 60</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon varon">
+<img alt="PANT. JEANS CARGO - TALLA 30 - VARON" loading="lazy" src="producto-034.jpg"/>
+<div class="info"><small>PANTALON VARON · YS_125</small>
+<h3>PANT. JEANS CARGO - TALLA 30 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="46" onclick="selectOption(this)" type="button">46</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 65</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT JEANS CARGO - TALLA 28 - VARON" loading="lazy" src="producto-035.jpg"/>
+<div class="info"><small>SHORT VARON · YS_132</small>
+<h3>SHORT JEANS CARGO - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="47" onclick="selectOption(this)" type="button">47</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 60</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT JEANS EXTRA BAGGY - TALLA 28 - VARON" loading="lazy" src="producto-036.jpg"/>
+<div class="info"><small>SHORT VARON · YS_136</small>
+<h3>SHORT JEANS EXTRA BAGGY - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="48" onclick="selectOption(this)" type="button">48</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 65</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT JEANS ESTAMPADO - TALLA 28 - VARON" loading="lazy" src="producto-037.jpg"/>
+<div class="info"><small>SHORT VARON · YS_141</small>
+<h3>SHORT JEANS ESTAMPADO - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="49" onclick="selectOption(this)" type="button">49</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 60</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT JEANS BORDADO - TALLA 28 - VARON" loading="lazy" src="producto-038.jpg"/>
+<div class="info"><small>SHORT VARON · YS_145</small>
+<h3>SHORT JEANS BORDADO - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="50" onclick="selectOption(this)" type="button">50</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 65</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT YORK LASER 1 - TALLA 28 - VARON" loading="lazy" src="producto-039.jpg"/>
+<div class="info"><small>SHORT VARON · YS_150</small>
+<h3>SHORT YORK LASER 1 - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="51" onclick="selectOption(this)" type="button">51</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 85</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT YORK LASER 2 - TALLA 28 - VARON" loading="lazy" src="producto-040.jpg"/>
+<div class="info"><small>SHORT VARON · YS_154</small>
+<h3>SHORT YORK LASER 2 - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="52" onclick="selectOption(this)" type="button">52</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 85</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT YORK COLOR ENTERO - TALLA 28 - VARON" loading="lazy" src="producto-041.jpg"/>
+<div class="info"><small>SHORT VARON · YS_158</small>
+<h3>SHORT YORK COLOR ENTERO - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="53" onclick="selectOption(this)" type="button">53</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 85</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT YORK CON LINEA - TALLA 28 - VARON" loading="lazy" src="producto-042.jpg"/>
+<div class="info"><small>SHORT VARON · YS_162</small>
+<h3>SHORT YORK CON LINEA - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="54" onclick="selectOption(this)" type="button">54</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 85</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT YORK VAN PIERRE - TALLA 28 - VARON" loading="lazy" src="producto-043.jpg"/>
+<div class="info"><small>SHORT VARON · YS_165</small>
+<h3>SHORT YORK VAN PIERRE - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="55" onclick="selectOption(this)" type="button">55</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 85</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT YORK CON PEDRERIA - TALLA 28 - VARON" loading="lazy" src="producto-044.jpg"/>
+<div class="info"><small>SHORT VARON · YS_168</small>
+<h3>SHORT YORK CON PEDRERIA - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="56" onclick="selectOption(this)" type="button">56</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 90</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT YORK SEMI PEDRERIA - TALLA 28 - VARON" loading="lazy" src="producto-045.jpg"/>
+<div class="info"><small>SHORT VARON · YS_172</small>
+<h3>SHORT YORK SEMI PEDRERIA - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="57" onclick="selectOption(this)" type="button">57</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 90</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="YORK S/ ESTAMPADO ELEMENT - TALLA 26 - VARON" loading="lazy" src="producto-046.jpg"/>
+<div class="info"><small>SHORT VARON · YS_176</small>
+<h3>YORK S/ ESTAMPADO ELEMENT - TALLA 26 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="58" onclick="selectOption(this)" type="button">58</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 78</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT CLASICO - TALLA 26 - VARON" loading="lazy" src="producto-047.jpg"/>
+<div class="info"><small>SHORT VARON · YS_180</small>
+<h3>SHORT CLASICO - TALLA 26 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="59" onclick="selectOption(this)" type="button">59</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 50</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT STRESH - TALLA 28 - VARON" loading="lazy" src="producto-048.jpg"/>
+<div class="info"><small>SHORT VARON · YS_187</small>
+<h3>SHORT STRESH - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="60" onclick="selectOption(this)" type="button">60</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 65</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT RASGADO CLASICO - TALLA 26 - VARON" loading="lazy" src="producto-049.jpg"/>
+<div class="info"><small>SHORT VARON · YS_191</small>
+<h3>SHORT RASGADO CLASICO - TALLA 26 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="61" onclick="selectOption(this)" type="button">61</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 50</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT DRILLS CLASICO - TALLA 26 - VARON" loading="lazy" src="producto-050.jpg"/>
+<div class="info"><small>SHORT VARON · YS_199</small>
+<h3>SHORT DRILLS CLASICO - TALLA 26 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="62" onclick="selectOption(this)" type="button">62</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 50</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT TAFETA - TALLA 28 - VARON" loading="lazy" src="producto-051.jpg"/>
+<div class="info"><small>SHORT VARON · YS_207</small>
+<h3>SHORT TAFETA - TALLA 28 - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="63" onclick="selectOption(this)" type="button">63</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 55</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short varon">
+<img alt="SHORT JEANS ESTAMPADO - TALLA 10 - NIÑO" loading="lazy" src="producto-052.jpg"/>
+<div class="info"><small>SHORT VARON · YS_216</small>
+<h3>SHORT JEANS ESTAMPADO - TALLA 10 - NIÑO</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="64" onclick="selectOption(this)" type="button">64</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 48</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo niño">
+<img alt="POLO OVERSIZE - TALLA 14 - NIÑO" loading="lazy" src="producto-053.jpg"/>
+<div class="info"><small>POLO NIÑO · YS_220</small>
+<h3>POLO OVERSIZE - TALLA 14 - NIÑO</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="65" onclick="selectOption(this)" type="button">65</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 30</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="poleras varon">
+<img alt="POLERA FRANELA REACTIVA- TALLA S - VARON" loading="lazy" src="producto-054.jpg"/>
+<div class="info"><small>POLERAS VARON · YS_222</small>
+<h3>POLERA FRANELA REACTIVA- TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 45</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="poleras varon">
+<img alt="POLERA BOXY FIT C/PEDRERIA - TALLA S - VARON" loading="lazy" src="producto-055.jpg"/>
+<div class="info"><small>POLERAS VARON · YS_223</small>
+<h3>POLERA BOXY FIT C/PEDRERIA - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 90</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="poleras varon">
+<img alt="HODDIES COLOR ENTERO - TALLA S - VARON" loading="lazy" src="producto-056.jpg"/>
+<div class="info"><small>POLERAS VARON · YS_224</small>
+<h3>HODDIES COLOR ENTERO - TALLA S - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 80</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="poleras varon">
+<img alt="POLERA BOXI FIT C/ESTAMPADO - TALLA M - VARON" loading="lazy" src="producto-057.jpg"/>
+<div class="info"><small>POLERAS VARON · YS_227</small>
+<h3>POLERA BOXI FIT C/ESTAMPADO - TALLA M - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 90</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="poleras varon">
+<img alt="POLERA CUELLO REDONDO - TALLA ESTÁNDAR - VARON" loading="lazy" src="producto-058.jpg"/>
+<div class="info"><small>POLERAS VARON · YS_229</small>
+<h3>POLERA CUELLO REDONDO - TALLA ESTÁNDAR - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 75</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="poleras varon">
+<img alt="POLERA FOCALIZADO C/CAPUCHA - TALLA M - VARON" loading="lazy" src="producto-059.jpg"/>
+<div class="info"><small>POLERAS VARON · YS_230</small>
+<h3>POLERA FOCALIZADO C/CAPUCHA - TALLA M - VARON</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button><button aria-pressed="false" class="option" data-value="XL" onclick="selectOption(this)" type="button">XL</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 75</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. WIDE LEG RIGIDO - TALLA 28 - MUJER" loading="lazy" src="producto-060.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_231</small>
+<h3>PANT. WIDE LEG RIGIDO - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 65</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. EXTRA PALAZO YTO - TALLA 26 - MUJER" loading="lazy" src="producto-061.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_235</small>
+<h3>PANT. EXTRA PALAZO YTO - TALLA 26 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 70</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. WIDE LEG CONFORT - TALLA 26 - MUJER" loading="lazy" src="producto-062.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_240</small>
+<h3>PANT. WIDE LEG CONFORT - TALLA 26 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 68</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. PETIT - CONFORT - TALLA 28 - MUJER" loading="lazy" src="producto-063.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_247</small>
+<h3>PANT. PETIT - CONFORT - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 68</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. FLARE PETIT BOLSILLO TAPA KARDIERS - TALLA 26 - MUJER" loading="lazy" src="producto-064.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_251</small>
+<h3>PANT. FLARE PETIT BOLSILLO TAPA KARDIERS - TALLA 26 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 75</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT.  PETIT BOLSILLO TAPA -  TALLA 28 - MUJER" loading="lazy" src="producto-065.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_255</small>
+<h3>PANT.  PETIT BOLSILLO TAPA -  TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 70</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. PALAZO CONFORT KP - TALLA 28 - MUJER" loading="lazy" src="producto-066.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_260</small>
+<h3>PANT. PALAZO CONFORT KP - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 75</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. FLARE CONFORT - TALLA 26 - MUJER" loading="lazy" src="producto-067.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_264</small>
+<h3>PANT. FLARE CONFORT - TALLA 26 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 70</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. PETIT C/ CORREA CONFORT - TALLA 34 - MUJER" loading="lazy" src="producto-068.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_269</small>
+<h3>PANT. PETIT C/ CORREA CONFORT - TALLA 34 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 75</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. PETIT CONFORT - TALLA 28 - MUJER" loading="lazy" src="producto-069.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_270</small>
+<h3>PANT. PETIT CONFORT - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 68</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. PETIT CONFORT BOLSILLO PEQUEÑO - TALLA 26 -MUJER" loading="lazy" src="producto-070.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_274</small>
+<h3>PANT. PETIT CONFORT BOLSILLO PEQUEÑO - TALLA 26 -MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 75</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. SKINNY - TALLA 26 - MUJER" loading="lazy" src="producto-071.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_279</small>
+<h3>PANT. SKINNY - TALLA 26 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 55</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. EXTRA BAGGY REGULABLE - TALLA 26 - MUJER" loading="lazy" src="producto-072.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_284</small>
+<h3>PANT. EXTRA BAGGY REGULABLE - TALLA 26 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 70</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. SIRENA STRESH - TALLA 28 - MUJER" loading="lazy" src="producto-073.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_287</small>
+<h3>PANT. SIRENA STRESH - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 60</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. BAGGY COLORES YTO - TALLA 28 - MUJER" loading="lazy" src="producto-074.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_290</small>
+<h3>PANT. BAGGY COLORES YTO - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 68</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. SKINNY BRILLO - TALLA 28 - MUJER" loading="lazy" src="producto-075.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_294</small>
+<h3>PANT. SKINNY BRILLO - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 60</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="pantalon mujer">
+<img alt="PANT. MINI PETIT - TALLA 28 - MUJER" loading="lazy" src="producto-076.jpg"/>
+<div class="info"><small>PANTALON MUJER · YS_297</small>
+<h3>PANT. MINI PETIT - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 70</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short falda mujer">
+<img alt="SHORT FALDA COLORES YTO - TALLA 34 - MUJER" loading="lazy" src="producto-077.jpg"/>
+<div class="info"><small>SHORT FALDA MUJER · YS_324</small>
+<h3>SHORT FALDA COLORES YTO - TALLA 34 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 58</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short falda mujer">
+<img alt="SHORT FALDA FLECO - TALLA 28 - MUJER" loading="lazy" src="producto-078.jpg"/>
+<div class="info"><small>SHORT FALDA MUJER · YS_325</small>
+<h3>SHORT FALDA FLECO - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 58</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short falda mujer">
+<img alt="SHORT FALDA CARGO STRESH - TALLA 28 - MUJER" loading="lazy" src="producto-079.jpg"/>
+<div class="info"><small>SHORT FALDA MUJER · YS_329</small>
+<h3>SHORT FALDA CARGO STRESH - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 48</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short falda mujer">
+<img alt="SHORT FALDA RIGIDO - TALLA 28 -MUJER" loading="lazy" src="producto-080.jpg"/>
+<div class="info"><small>SHORT FALDA MUJER · YS_333</small>
+<h3>SHORT FALDA RIGIDO - TALLA 28 -MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 58</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short falda mujer">
+<img alt="SHORT FALDA CONFORT - TALLA 34 -MUJER" loading="lazy" src="producto-081.jpg"/>
+<div class="info"><small>SHORT FALDA MUJER · YS_334</small>
+<h3>SHORT FALDA CONFORT - TALLA 34 -MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 58</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short falda mujer">
+<img alt="SHORT FALDA ESTRELLA - TALLA 28 -MUJER" loading="lazy" src="producto-082.jpg"/>
+<div class="info"><small>SHORT FALDA MUJER · YS_335</small>
+<h3>SHORT FALDA ESTRELLA - TALLA 28 -MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 48</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="falda jeans mujer">
+<img alt="FALDA JEANS CONFORT - TALLA 28 - MUJER" loading="lazy" src="producto-083.jpg"/>
+<div class="info"><small>FALDA JEANS MUJER · YS_336</small>
+<h3>FALDA JEANS CONFORT - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 48</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short mujer">
+<img alt="SHORT COLORES YTO - TALLA 28 - MUJER" loading="lazy" src="producto-084.jpg"/>
+<div class="info"><small>SHORT MUJER · YS_340</small>
+<h3>SHORT COLORES YTO - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 48</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short mujer">
+<img alt="SHORT RIGIDO - TALLA 26 - MUJER" loading="lazy" src="producto-085.jpg"/>
+<div class="info"><small>SHORT MUJER · YS_344</small>
+<h3>SHORT RIGIDO - TALLA 26 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 48</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short mujer">
+<img alt="SHORT BEIKER RIGIDO - TALLA 28 - MUJER" loading="lazy" src="producto-086.jpg"/>
+<div class="info"><small>SHORT MUJER · YS_348</small>
+<h3>SHORT BEIKER RIGIDO - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 55</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short mujer">
+<img alt="SHORT STRESH - TALLA 26 - MUJER" loading="lazy" src="producto-087.jpg"/>
+<div class="info"><small>SHORT MUJER · YS_352</small>
+<h3>SHORT STRESH - TALLA 26 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 48</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short mujer">
+<img alt="SHORT TAFETA - TALLA 28 - MUJER" loading="lazy" src="producto-088.jpg"/>
+<div class="info"><small>SHORT MUJER · YS_356</small>
+<h3>SHORT TAFETA - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 48</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short mujer">
+<img alt="SHORT JEAN CAHETEROS - TALLA 28 - MUJER" loading="lazy" src="producto-089.jpg"/>
+<div class="info"><small>SHORT MUJER · YS_360</small>
+<h3>SHORT JEAN CAHETEROS - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 48</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short mujer">
+<img alt="SHORT CONFORT KADIERS - TALLA 34 - MUJER" loading="lazy" src="producto-090.jpg"/>
+<div class="info"><small>SHORT MUJER · YS_364</small>
+<h3>SHORT CONFORT KADIERS - TALLA 34 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 48</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="short mujer">
+<img alt="SHORT CONFORT 2 BOTONES - TALLA 28 - MUJER" loading="lazy" src="producto-091.jpg"/>
+<div class="info"><small>SHORT MUJER · YS_366</small>
+<h3>SHORT CONFORT 2 BOTONES - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="26" onclick="selectOption(this)" type="button">26</button><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button><button aria-pressed="false" class="option" data-value="36" onclick="selectOption(this)" type="button">36</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 48</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo mujer">
+<img alt="POLO SUPLEX - TALLA ESTÁNDAR - MUJER" loading="lazy" src="producto-092.jpg"/>
+<div class="info"><small>POLO MUJER · YS_370</small>
+<h3>POLO SUPLEX - TALLA ESTÁNDAR - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 15</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo mujer">
+<img alt="BODY SUPLEX - ESTÁNDAR - MUJER" loading="lazy" src="producto-093.jpg"/>
+<div class="info"><small>POLO MUJER · YS_372</small>
+<h3>BODY SUPLEX - ESTÁNDAR - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 15</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo mujer">
+<img alt="POLO OVERSIZE ACID WASH - TALLA S - MUJER" loading="lazy" src="producto-094.jpg"/>
+<div class="info"><small>POLO MUJER · YS_373</small>
+<h3>POLO OVERSIZE ACID WASH - TALLA S - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 35</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo mujer">
+<img alt="POLO CLASICO PIMA - TALLA S - MUJER" loading="lazy" src="producto-095.jpg"/>
+<div class="info"><small>POLO MUJER · YS_376</small>
+<h3>POLO CLASICO PIMA - TALLA S - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 33</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo mujer">
+<img alt="POLO OVERSIZE PIMA - TALLA S - MUJER" loading="lazy" src="producto-096.jpg"/>
+<div class="info"><small>POLO MUJER · YS_379</small>
+<h3>POLO OVERSIZE PIMA - TALLA S - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 33</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo mujer">
+<img alt="POLO BOXY FIT - TALLA S - MUJER" loading="lazy" src="producto-097.jpg"/>
+<div class="info"><small>POLO MUJER · YS_382</small>
+<h3>POLO BOXY FIT - TALLA S - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 33</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="polo mujer">
+<img alt="POLO BOXY FIT C/PEDRERIA PIMA - TALLA S - MUJER" loading="lazy" src="producto-098.jpg"/>
+<div class="info"><small>POLO MUJER · YS_385</small>
+<h3>POLO BOXY FIT C/PEDRERIA PIMA - TALLA S - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 33</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="blusa mujer">
+<img alt="BLUSA SEDA FRANCESA - TALLA STANDAR - MUJER" loading="lazy" src="producto-099.jpg"/>
+<div class="info"><small>BLUSA MUJER · YS_388</small>
+<h3>BLUSA SEDA FRANCESA - TALLA STANDAR - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 40</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="blusa mujer">
+<img alt="BLUSA SEDA FRANCESA MANGA LARGA - TALLA S - MUJER" loading="lazy" src="producto-100.jpg"/>
+<div class="info"><small>BLUSA MUJER · YS_390</small>
+<h3>BLUSA SEDA FRANCESA MANGA LARGA - TALLA S - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="S" onclick="selectOption(this)" type="button">S</button><button aria-pressed="false" class="option" data-value="M" onclick="selectOption(this)" type="button">M</button><button aria-pressed="false" class="option" data-value="L" onclick="selectOption(this)" type="button">L</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 40</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="casaca jeans mujer">
+<img alt="CASACA JEANS - TALLA 28 - MUJER" loading="lazy" src="producto-101.jpg"/>
+<div class="info"><small>CASACA JEANS MUJER · YS_392</small>
+<h3>CASACA JEANS - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 65</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article><article class="card" data-cat="chaleco jeans mujer">
+<img alt="CHALECO JEANS - TALLA 28 - MUJER" loading="lazy" src="producto-102.jpg"/>
+<div class="info"><small>CHALECO JEANS MUJER · YS_394</small>
+<h3>CHALECO JEANS - TALLA 28 - MUJER</h3>
+<div aria-label="Seleccionar talla y color" class="variant-picker"><div class="variant-label">Elige tu talla</div><div class="option-list" data-option-group="size"><button aria-pressed="false" class="option" data-value="28" onclick="selectOption(this)" type="button">28</button><button aria-pressed="false" class="option" data-value="30" onclick="selectOption(this)" type="button">30</button><button aria-pressed="false" class="option" data-value="32" onclick="selectOption(this)" type="button">32</button><button aria-pressed="false" class="option" data-value="34" onclick="selectOption(this)" type="button">34</button></div><div class="variant-label color-label">Color</div><div class="option-list" data-option-group="color"><button aria-pressed="true" class="option selected" data-value="VARIADO" onclick="selectOption(this)" type="button">Variado</button></div></div><div class="bottom"><strong>S/ 40</strong><button onclick="askSelected(this)" type="button">Consultar por WhatsApp</button></div>
+</div></article></section></main><footer><b>YOES</b><p>Tu estilo, tu regla, tu marca. · Rioja, Perú</p></footer>
 <script>
 function filterCat(cat,btn){document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.card').forEach(c=>c.style.display=(cat==='todos'||c.dataset.cat===cat.toLowerCase())?'':'none')}
-function ask(name,price){const msg='Hola, quiero consultar por '+name+' ('+price+').';window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank')}
+function selectOption(btn){const group=btn.closest('.option-list');group.querySelectorAll('.option').forEach(x=>{x.classList.remove('selected');x.setAttribute('aria-pressed','false')});btn.classList.add('selected');btn.setAttribute('aria-pressed','true')}
+function askSelected(btn){const card=btn.closest('.card');const size=card.querySelector('[data-option-group="size"] .option.selected');const color=card.querySelector('[data-option-group="color"] .option.selected');if(!size){alert('Por favor, selecciona una talla antes de consultar.');return}const name=card.querySelector('h3')?.textContent.trim()||'producto YOES';const price=card.querySelector('.bottom strong')?.textContent.trim()||'';const msg='Hola, quiero consultar por '+name+'. Talla: '+size.dataset.value+'. Color: '+(color?color.dataset.value:'No seleccionado')+'. Precio: '+price+'. ¿Está disponible?';window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank')}
 </script></body></html>
