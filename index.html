@@ -12,18 +12,19 @@ footer{background:#111;color:#ddd;padding:25px 5%;font-size:13px}
 .modal{position:fixed;inset:0;background:#0009;z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.detail{position:relative;background:#fff;width:min(1120px,100%);max-height:94vh;overflow:auto;border-radius:18px;display:grid;grid-template-columns:1fr 1.08fr;gap:30px;padding:24px}.close{position:absolute;right:16px;top:12px;border:0;background:#eee;border-radius:50%;width:38px;height:38px;font-size:24px;z-index:2}.gallery-main{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;background:#eee;display:block}.thumbs{display:flex;gap:9px;margin-top:10px}.thumb{width:82px;height:82px;object-fit:cover;border:2px solid #111;border-radius:9px;padding:2px}.detail-info{padding:12px 18px 12px 0}.detail-category{color:#888;font-size:18px;margin:0 0 18px}.detail h2{font-size:clamp(25px,3vw,42px);line-height:1.1;margin:8px 0}.detail-price{font-size:42px;font-weight:900;margin:16px 0 28px}.section-title{font-size:21px;font-weight:800;margin:20px 0 12px}.choices{display:flex;flex-wrap:wrap;gap:10px}.choice{min-width:58px;padding:13px 17px;border:1px solid #ccc;background:#f6f6f6;border-radius:10px;font-size:17px;font-weight:700}.choice.selected{background:#111;color:#fff;border-color:#111}.color-choice{display:flex;align-items:center;gap:8px}.color-dot{width:18px;height:18px;border-radius:50%;background:#bbb;border:1px solid #aaa}.quantity{display:flex;align-items:center;border:1px solid #ddd;border-radius:10px;overflow:hidden;width:max-content}.quantity button{border:0;background:#eee;width:60px;height:54px;font-size:27px}.quantity span{min-width:70px;text-align:center;font-size:22px}.add-cart,.checkout{width:100%;border:0;background:#111;color:white;border-radius:12px;padding:19px 16px;font-size:18px;font-weight:800;margin-top:16px}.checkout{background:#1b7c45;margin-top:10px}.cart-count{border:0;background:white;color:#111;border-radius:20px;padding:9px 13px;font-weight:700}.cart-count span{background:#111;color:#fff;border-radius:50%;padding:3px 7px;margin-left:5px}.helper{color:#777;font-size:12px;margin-top:9px}
 @media(max-width:760px){.detail{grid-template-columns:1fr;gap:12px;padding:14px;max-height:96vh}.detail-info{padding:4px}.gallery-main{max-height:42vh;aspect-ratio:4/3;object-fit:contain}.detail-price{font-size:32px;margin:12px 0 18px}.section-title{margin:14px 0 9px}.choice{padding:10px 14px}.thumbs{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card-info{padding:9px}}
 
-.yoes-footer{background:#fff;color:#222;padding:34px 5% 28px;font-size:13px}
-.footer-inner{max-width:440px;margin:0 auto;text-align:left}
-.footer-logo{font-family:Georgia,serif;font-style:italic;font-size:42px;line-height:1.05;letter-spacing:-3px;color:#111}
-.footer-tagline{font-size:10px;letter-spacing:1.6px;color:#555;margin:3px 0 16px}
-.footer-rule{height:1px;background:#aaa;width:100%;margin:14px 0}
-.footer-social{display:flex;align-items:center;gap:15px;padding:0 4px}
-.footer-social a{width:36px;height:36px;border:1.5px solid #111;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#111;text-decoration:none;transition:background .15s,color .15s}
+.yoes-footer{background:#fff;color:#171717;padding:42px 5% 34px;font-size:13px;border-top:1px solid #eee}
+.footer-inner{max-width:880px;margin:0 auto;text-align:center}
+.footer-logo{font-family:Georgia,serif;font-style:italic;font-weight:700;font-size:64px;line-height:1;letter-spacing:-4px;color:#080808;position:relative;display:inline-block;padding-top:20px}
+.footer-logo:before{content:"♛";position:absolute;left:50%;top:-8px;transform:translateX(-50%);font-family:Georgia,serif;font-size:28px;font-style:normal;letter-spacing:0}
+.footer-tagline{font-size:12px;letter-spacing:3px;color:#222;margin:10px 0 24px}
+.footer-rule{height:1px;background:#888;width:min(100%,760px);margin:20px auto}
+.footer-social{display:flex;align-items:center;justify-content:center;gap:22px;padding:0 4px}
+.footer-social a{width:58px;height:58px;border:2px solid #111;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#111;text-decoration:none;transition:background .15s,color .15s}
 .footer-social a:hover{background:#111;color:#fff}
-.footer-social svg{width:19px;height:19px;fill:currentColor}
-.footer-location{font-size:13px;color:#444;margin-top:17px;letter-spacing:.5px}
-.footer-copy{font-size:11px;color:#777;margin-top:8px}
-@media(max-width:600px){.yoes-footer{padding:28px 7% 24px}.footer-inner{max-width:100%}}
+.footer-social svg{width:27px;height:27px;fill:currentColor}
+.footer-location{font-size:22px;font-weight:800;color:#111;margin-top:12px;letter-spacing:1.2px}
+.footer-copy{font-size:16px;color:#777;margin-top:10px}
+@media(max-width:600px){.yoes-footer{padding:34px 6% 28px}.footer-inner{max-width:100%}.footer-logo{font-size:54px}.footer-tagline{font-size:10px;letter-spacing:2px}.footer-social a{width:50px;height:50px}.footer-location{font-size:18px}.footer-copy{font-size:13px}}
 
 </style></head><body>
 <header><div><div class="logo">YOES</div><p>Tu estilo, tu regla, tu marca.</p></div><b>LIMA · PERÚ</b><button class="cart-count" onclick="showCart()">Carrito <span id="cartCount">0</span></button></header>
