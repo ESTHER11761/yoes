@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YOES | Administración</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f4f4;font-family:Arial,sans-serif;color:#171717}
+header{background:#111;color:white;padding:20px 5%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:30px;font-weight:900;letter-spacing:3px}
+.logo span{color:#c7ff3d}
+main{max-width:1050px;margin:35px auto;padding:0 18px}
+.panel{background:white;padding:25px;border-radius:12px;margin-bottom:20px}
+h2{margin-top:0}
+input,button{padding:13px;border-radius:7px;font-size:15px}
+input{width:100%;border:1px solid #ccc;margin:7px 0 15px}
+button{border:0;background:#c7ff3d;font-weight:bold;cursor:pointer}
+button:hover{opacity:.85}
+.logout{background:white;color:#111}
+.hidden{display:none}
+.message{margin-top:12px;color:#b00020}
+table{width:100%;border-collapse:collapse}
+th,td{padding:12px;border-bottom:1px solid #ddd;text-align:left}
+.table-wrap{overflow-x:auto}
+.status{color:#168044;font-weight:bold}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">YOES<span>.</span></div>
+  <button id="logoutBtn" class="logout hidden">Cerrar sesión</button>
+</header>
+
+<main>
+  <section id="loginPanel" class="panel">
+    <h2>Acceso privado YOES</h2>
+    <p>Ingresa con tu usuario administrador.</p>
+
+    <form id="loginForm">
+      <label>Correo electrónico</label>
+      <input id="email" type="email" required
+      placeholder="Tu correo">
+
+      <label>Contraseña</label>
+      <input id="password" type="password" required
+      placeholder="Tu contraseña">
+
+      <button type="submit">INGRESAR</button>
+    </form>
+    <p id="loginMessage" class="message"></p>
+  </section>
+
+  <section id="adminPanel" class="hidden">
+    <div class="panel">
+      <h2>Panel de administración</h2>
+      <p class="status">Acceso autorizado: administrador YOES</p>
+      <p>Desde aquí gestionaremos el catálogo de tu tienda.</p>
+    </div>
+
+    <div class="panel">
+      <h2>Productos registrados</h2>
+      <p id="productCount">Cargando...</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="productsTable"></tbody>
+        </table>
+      </div>
+      <p id="productsMessage"></p>
+    </div>
+  </section>
+</main>
+
+<script>
+const SUPABASE_URL = 'https://eowqjlzfwbevrqhaewsk.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_z3IsC0TNVzRtIYfItp5pTg_vY0SIV8u';
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+const loginPanel = document.getElementById('loginPanel');
+const adminPanel = document.getElementById('adminPanel');
+const logoutBtn = document.getElementById('logoutBtn');
+const loginMessage = document.getElementById('loginMessage');
+
+async function verificarAdministrador() {
+  const { data: { session } } =
+    await supabaseClient.auth.getSession();
+
+  if (!session) {
+    mostrarLogin();
+    return;
+  }
+
+  const { data, error } = await supabaseClient
+    .from('admin_profiles')
+    .select('role, display_name')
+    .eq('user_id', session.user.id)
+    .maybeSingle();
+
+  if (error || !data || data.role !== 'admin') {
+    await supabaseClient.auth.signOut();
+    mostrarLogin();
+    loginMessage.textContent =
+      'Tu usuario no tiene permisos de administrador.';
+    return;
+  }
+
+  loginPanel.classList.add('hidden');
+  adminPanel.classList.remove('hidden');
+  logoutBtn.classList.remove('hidden');
+
+  cargarProductos();
+}
+
+function mostrarLogin() {
+  loginPanel.classList.remove('hidden');
+  adminPanel.classList.add('hidden');
+  logoutBtn.classList.add('hidden');
+}
+
+document.getElementById('loginForm')
+.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  loginMessage.textContent = 'Verificando acceso...';
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const { error } = await supabaseClient.auth
+    .signInWithPassword({ email, password });
+
+  if (error) {
+    loginMessage.textContent = 'Error: ' + error.message;
+    return;
+  }
+
+  await verificarAdministrador();
+});
+
+logoutBtn.addEventListener('click', async function() {
+  await supabaseClient.auth.signOut();
+  mostrarLogin();
+});
+
+async function cargarProductos() {
+  const tabla = document.getElementById('productsTable');
+  const mensaje = document.getElementById('productsMessage');
+
+  tabla.innerHTML = '';
+  mensaje.textContent = 'Consultando productos...';
+
+  const { data, error } = await supabaseClient
+    .from('products')
+    .select('id, name, category, active')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    mensaje.textContent = 'Error al cargar: ' + error.message;
+    return;
+  }
+
+  document.getElementById('productCount').textContent =
+    'Total de productos: ' + data.length;
+
+  if (data.length === 0) {
+    mensaje.textContent = 'Todavía no hay productos registrados.';
+    return;
+  }
+
+  mensaje.textContent = '';
+
+  data.forEach(product => {
+    const fila = document.createElement('tr');
+
+    const nombre = document.createElement('td');
+    nombre.textContent = product.name || '';
+
+    const categoria = document.createElement('td');
+    categoria.textContent = product.category || '';
+
+    const estado = document.createElement('td');
+    estado.textContent = product.active ? 'Activo' : 'Inactivo';
+
+    fila.append(nombre, categoria, estado);
+    tabla.appendChild(fila);
+  });
+}
+
+supabaseClient.auth.onAuthStateChange(() => {
+  setTimeout(verificarAdministrador, 0);
+});
+
+verificarAdministrador();
+</script>
+
+</body>
+</html>
