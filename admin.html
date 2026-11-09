@@ -273,6 +273,84 @@ async function cargarProductos() {
     tabla.appendChild(fila);
   });
 }
+  // REGISTRAR PRODUCTOS EN SUPABASE
+document.getElementById('productForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const mensaje = document.getElementById('formMessage');
+  const boton = this.querySelector('button[type="submit"]');
+
+  const nombre = document.getElementById('productName').value.trim();
+  const sku = document.getElementById('productSku').value.trim();
+  const categoria = document.getElementById('productCategory').value;
+  const talla = document.getElementById('productSize').value;
+  const color = document.getElementById('productColor').value.trim();
+  const stock = Number(document.getElementById('productStock').value);
+  const costo = Number(document.getElementById('productCost').value);
+  const precio = Number(document.getElementById('productPrice').value);
+
+  if (!nombre || !categoria || !talla || !color) {
+    mensaje.textContent = 'Completa todos los campos.';
+    return;
+  }
+
+  if (
+    !Number.isFinite(stock) || stock < 0 ||
+    !Number.isFinite(costo) || costo < 0 ||
+    !Number.isFinite(precio) || precio <= 0
+  ) {
+    mensaje.textContent = 'Revisa el stock, costo y precio.';
+    return;
+  }
+
+  boton.disabled = true;
+  boton.textContent = 'Guardando...';
+  mensaje.textContent = '';
+
+  try {
+    // 1. Registrar producto
+    const { data: producto, error: errorProducto } = await supabaseClient
+      .from('products')
+      .insert([{
+        name: nombre,
+        sku: sku || null,
+        category: categoria,
+        active: true
+      }])
+      .select('id')
+      .single();
+
+    if (errorProducto) throw errorProducto;
+
+    // 2. Registrar talla, color, costo, precio y stock
+    const { error: errorVariante } = await supabaseClient
+      .from('product_variants')
+      .insert([{
+        product_id: producto.id,
+        sku: sku || null,
+        size: talla,
+        color: color,
+        cost: costo,
+        price: precio,
+        stock: stock,
+        active: true
+      }]);
+
+    if (errorVariante) throw errorVariante;
+
+    mensaje.textContent = '¡Producto registrado correctamente!';
+    this.reset();
+
+    await cargarProductos();
+
+  } catch (error) {
+    console.error('Error al registrar:', error);
+    mensaje.textContent = 'Error: ' + error.message;
+  } finally {
+    boton.disabled = false;
+    boton.textContent = 'Registrar producto';
+  }
+});
 
 supabaseClient.auth.onAuthStateChange(() => {
   setTimeout(verificarAdministrador, 0);
