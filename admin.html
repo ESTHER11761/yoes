@@ -77,6 +77,65 @@ th,td{padding:12px;border-bottom:1px solid #ddd;text-align:left}
         </table>
       </div>
       <p id="productsMessage"></p>
+      <section class="admin-form">
+  <h2>Registrar nuevo producto</h2>
+
+  <form id="productForm">
+    <label>Nombre del producto</label>
+    <input type="text" id="productName" required
+      placeholder="Ej. Polo Oversize">
+
+    <label>Código SKU</label>
+    <input type="text" id="productSku"
+      placeholder="Ej. YOES-001">
+
+    <label>Categoría</label>
+    <select id="productCategory" required>
+      <option value="">Seleccionar categoría</option>
+      <option value="Hombre">Hombre</option>
+      <option value="Mujer">Mujer</option>
+      <option value="Unisex">Unisex</option>
+    </select>
+
+    <label>Descripción</label>
+    <textarea id="productDescription"
+      placeholder="Descripción del producto"></textarea>
+
+    <label>URL de la fotografía</label>
+    <input type="text" id="productImage"
+      placeholder="images/producto-001.jpg">
+
+    <label>Costo (S/)</label>
+    <input type="number" id="productCost"
+      min="0" step="0.01" required>
+
+    <label>Precio de venta (S/)</label>
+    <input type="number" id="productPrice"
+      min="0" step="0.01" required>
+
+    <label>Talla</label>
+    <select id="productSize" required>
+      <option value="">Seleccionar talla</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="UNITALLA">Unitalla</option>
+    </select>
+
+    <label>Color</label>
+    <input type="text" id="productColor"
+      placeholder="Ej. Negro" required>
+
+    <label>Stock</label>
+    <input type="number" id="productStock"
+      min="0" step="1" required>
+
+    <button type="submit">Registrar producto</button>
+  </form>
+
+  <p id="formMessage"></p>
+</section>
     </div>
   </section>
 </main>
