@@ -104,19 +104,10 @@ th,td{padding:12px;border-bottom:1px solid #ddd;text-align:left}
     <label>URL de la fotografía</label>
     <input type="text" id="productImage"
       placeholder="images/producto-001.jpg">
-
-    <label>Costo (S/)</label>
-    <input type="number" id="productCost"
-      min="0" step="0.01" required>
-
-    <label>Precio de venta (S/)</label>
-    <input type="number" id="productPrice"
-      min="0" step="0.01" required>
-
-    <label>Talla</label>
-    <select id="productSize" required>
-      <option value="">Seleccionar talla</option>
-      <option value="S">S</option>
+<label>Talla</label>
+<select id="productSize" required>
+  <option value="">Seleccionar talla</option>    
+  <option value="S">S</option>
       <option value="M">M</option>
       <option value="L">L</option>
       <option value="XL">XL</option>
@@ -309,34 +300,50 @@ document.getElementById('productForm').addEventListener('submit', async function
 
   try {
     // 1. Registrar producto
-    const { data: producto, error: errorProducto } = await supabaseClient
-      .from('products')
-      .insert([{
-        name: nombre,
-        sku: sku || null,
-        category: categoria,
-        active: true
-      }])
-      .select('id')
-      .single();
+   
+// 1. Registrar producto
+const descripcion = document.getElementById('productDescription').value.trim();
+const imagen = document.getElementById('productImage').value.trim();
 
-    if (errorProducto) throw errorProducto;
+const { data: producto, error: errorProducto } = await supabaseClient
+  .from('products')
+  .insert({
+    name: nombre,
+    sku: sku || null,
+    category: categoria,
+    description: descripcion || null,
+    image_url: imagen || null,
+    active: true
+  })
+  .select('id')
+  .single();
 
-    // 2. Registrar talla, color, costo, precio y stock
-    const { error: errorVariante } = await supabaseClient
-      .from('product_variants')
-      .insert([{
-        product_id: producto.id,
-        sku: sku || null,
-        size: talla,
-        color: color,
-        cost: costo,
-        price: precio,
-        stock: stock,
-        active: true
-      }]);
+if (errorProducto) throw errorProducto;
 
-    if (errorVariante) throw errorVariante;
+// 2. Registrar talla, color, costo, precio y stock
+const { error: errorVariante } = await supabaseClient
+  .from('product_variants')
+  .insert({
+    product_id: producto.id,
+    sku: sku || null,
+    size: talla,
+    color: color,
+    cost: costo,
+    price: precio,
+    stock: stock,
+    active: true
+  });
+
+if (errorVariante) {
+  // Si falla la variante, eliminar el producto recién creado
+  await supabaseClient
+    .from('products')
+    .delete()
+    .eq('id', producto.id);
+
+  throw errorVariante;
+}
+
 
     mensaje.textContent = '¡Producto registrado correctamente!';
     this.reset();
