@@ -441,7 +441,126 @@ function changeCartQty(i,n){if(!cart[i])return;cart[i].qty=Math.max(0,cart[i].qt
 function removeCartItem(i){cart.splice(i,1);saveCart();renderCart()}
 function closeCart(){document.getElementById('cartModal').classList.remove('open');document.body.style.overflow=''}
 function checkout(){if(!cart.length){alert('Tu carrito está vacío.');return}const name=document.getElementById('customerName').value.trim();const city=document.getElementById('customerCity').value.trim();if(!name||!city){alert('Completa tu nombre y tu ciudad o distrito para enviar el pedido.');return}const total=cart.reduce((a,x)=>a+(Number(x.unitPrice)||parsePrice(x.price))*x.qty,0);const lines=cart.map(x=>'- '+x.name+' | Talla '+x.size+' | Color '+x.color+' | Cantidad '+x.qty+' | '+x.price).join('\n');const msg='Hola, YOES. Quiero realizar este pedido:\n\n'+lines+'\n\nTotal referencial: S/ '+total.toFixed(2)+'\nNombre: '+name+'\nCiudad/distrito: '+city+'\n\nPor favor, confirmen disponibilidad y forma de entrega.';const phone=WHATSAPP_NUMBER.replace(/\D/g,'');const url=phone?'https://wa.me/'+phone+'?text='+encodeURIComponent(msg):'https://wa.me/?text='+encodeURIComponent(msg);window.open(url,'_blank','noopener');}
+
+async function cargarProductosSupabase() {
+  const db = window.yoesSupabase;
+
+  if (!db) {
+    console.error('No se encontró la conexión con Supabase.');
+    return;
+  }
+
+  try {
+    const { data: productos, error: errorProductos } = await db
+      .from('products')
+      .select('id, sku, name, category, description, image_url, active')
+      .eq('active', true);
+
+    if (errorProductos) throw errorProductos;
+
+    const { data: variantes, error: errorVariantes } = await db
+      .from('product_variants')
+      .select('id, product_id, sku, size, color, price, stock, active, image_url')
+      .eq('active', true);
+
+    if (errorVariantes) throw errorVariantes;
+
+    const skusActuales = new Set(
+      PRODUCTS.map(p => {
+        const match = (p.small || '').match(/YS[_-]\d+/i);
+        return match ? match[0].toUpperCase() : '';
+      }).filter(Boolean)
+    );
+
+    const grupos = new Map();
+
+    productos.forEach(p => {
+      const filas = variantes.filter(v => v.product_id === p.id);
+      if (!filas.length) return;
+
+      const sku = (filas[0].sku || p.sku || '').toUpperCase();
+
+      if (sku && skusActuales.has(sku)) return;
+
+      const imagen = filas.find(v => v.image_url)?.image_url || p.image_url || '';
+
+      const producto = {
+        cat: (p.category || '').toLowerCase() === 'hombre'
+          ? 'polo varon'
+          : (p.category || '').toLowerCase() === 'mujer'
+          ? 'polo mujer'
+          : (p.category || 'todos').toLowerCase(),
+        img: imagen.startsWith('http') || imagen.startsWith('/')
+          ? imagen
+          : 'images/' + imagen.replace(/^images\//, ''),
+        alt: p.name,
+        small: (p.category || 'YOES') + ' · ' + sku,
+        title: p.name,
+        price: 'S/ ' + Number(filas[0].price || 0).toFixed(2),
+        sizes: [...new Set(filas.map(v => v.size).filter(Boolean))],
+        colors: [...new Set(filas.map(v => v.color).filter(Boolean))]
+      };
+
+      grupos.set(p.id, producto);
+      if (sku) skusActuales.add(sku);
+    });
+
+    grupos.forEach(producto => {
+      const index = PRODUCTS.length;
+      PRODUCTS.push(producto);
+
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.dataset.cat = producto.cat;
+      card.dataset.index = index;
+      card.setAttribute('role', 'button');
+      card.tabIndex = 0;
+
+      const img = document.createElement('img');
+      img.src = producto.img;
+      img.alt = producto.alt;
+      img.loading = 'lazy';
+
+      const info = document.createElement('div');
+      info.className = 'card-info';
+
+      const small = document.createElement('small');
+      small.textContent = producto.small;
+
+      const title = document.createElement('h3');
+      title.textContent = producto.title;
+
+      const price = document.createElement('strong');
+      price.textContent = producto.price;
+
+      const detail = document.createElement('span');
+      detail.className = 'view-detail';
+      detail.innerHTML = 'Ver producto <b>›</b>';
+
+      info.append(small, title, price, detail);
+      card.append(img, info);
+
+      card.addEventListener('click', () => openProduct(index));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openProduct(index);
+        }
+      });
+
+      document.getElementById('productGrid').appendChild(card);
+    });
+
+    applyCatalog();
+    console.log('YOES: productos de Supabase cargados correctamente.');
+
+  } catch (error) {
+    console.error('Error cargando productos YOES:', error.message);
+  }
+}
+
 updateCartCount();applyCatalog();
+cargarProductosSupabase();
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeProduct();closeCart()}});
 document.querySelectorAll('.card').forEach((c)=>c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openProduct(Number(c.dataset.index))}}));
 </script></body></html>
