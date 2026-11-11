@@ -68,10 +68,14 @@ th,td{padding:12px;border-bottom:1px solid #ddd;text-align:left}
         <table>
           <thead>
             <tr>
-              <th>Producto</th>
-              <th>Categoría</th>
-              <th>Estado</th>
-            </tr>
+            
+    <th>Producto</th>
+    <th>SKU</th>
+    <th>Categoría</th>
+    <th>Estado</th>
+    <th>Acciones</th>
+</tr>
+
           </thead>
           <tbody id="productsTable"></tbody>
         </table>
@@ -230,7 +234,7 @@ async function cargarProductos() {
 
   const { data, error } = await supabaseClient
     .from('products')
-    .select('id, name, category, active')
+.select('id, name, sku, category, active')
     .order('created_at', { ascending: false });
 
   if (error) {
@@ -248,11 +252,15 @@ async function cargarProductos() {
 
   mensaje.textContent = '';
 
-  data.forEach(product => {
+  
+data.forEach(product => {
     const fila = document.createElement('tr');
 
     const nombre = document.createElement('td');
     nombre.textContent = product.name || '';
+
+    const sku = document.createElement('td');
+    sku.textContent = product.sku || '';
 
     const categoria = document.createElement('td');
     categoria.textContent = product.category || '';
@@ -260,12 +268,83 @@ async function cargarProductos() {
     const estado = document.createElement('td');
     estado.textContent = product.active ? 'Activo' : 'Inactivo';
 
-    fila.append(nombre, categoria, estado);
+    const acciones = document.createElement('td');
+
+    const botonEditar = document.createElement('button');
+    botonEditar.textContent = 'Editar';
+    botonEditar.type = 'button';
+    botonEditar.onclick = () => editarProducto(product.id);
+
+    acciones.appendChild(botonEditar);
+
+    fila.append(nombre, sku, categoria, estado, acciones);
     tabla.appendChild(fila);
-  });
+});
+
 }
   // REGISTRAR PRODUCTOS EN SUPABASE
-document.getElementById('productForm').addEventListener('submit', async function(e) {
+
+let productoEnEdicion = null;
+
+async function editarProducto(id) {
+  const mensaje = document.getElementById('formMessage');
+
+  mensaje.textContent = 'Cargando producto...';
+
+  const { data: producto, error } = await supabaseClient
+    .from('products')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    mensaje.textContent = 'Error: ' + error.message;
+    return;
+  }
+
+  const { data: variantes, error: errorVariantes } = await supabaseClient
+    .from('product_variants')
+    .select('*')
+    .eq('product_id', id)
+    .limit(2);
+
+  if (errorVariantes || !variantes || variantes.length !== 1) {
+    mensaje.textContent =
+      'No se pudo identificar una única variante para editar.';
+    return;
+  }
+
+  const variante = variantes[0];
+
+  productoEnEdicion = {
+    productoId: id,
+    varianteId: variante.id
+  };
+
+  document.getElementById('productName').value = producto.name || '';
+  document.getElementById('productSku').value = producto.sku || '';
+  document.getElementById('productCategory').value = producto.category || '';
+  document.getElementById('productDescription').value = producto.description || '';
+  document.getElementById('productImage').value = producto.image_url || '';
+
+  document.getElementById('productSize').value = variante.size || '';
+  document.getElementById('productColor').value = variante.color || '';
+  document.getElementById('productStock').value = variante.stock ?? 0;
+  document.getElementById('productCost').value = variante.cost ?? 0;
+  document.getElementById('productPrice').value = variante.price ?? 0;
+
+  const boton = document.querySelector('#productForm button[type="submit"]');
+  boton.textContent = 'Guardar cambios';
+
+  mensaje.textContent = 'Editando producto: ' + producto.name;
+
+  document.getElementById('productForm').scrollIntoView({
+    behavior: 'smooth'
+  });
+}
+
+document.getElementById('productForm')
+.addEventListener('submit', async function(e) {
   e.preventDefault();
 
   const mensaje = document.getElementById('formMessage');
@@ -279,14 +358,16 @@ document.getElementById('productForm').addEventListener('submit', async function
   const stock = Number(document.getElementById('productStock').value);
   const costo = Number(document.getElementById('productCost').value);
   const precio = Number(document.getElementById('productPrice').value);
+  const descripcion = document.getElementById('productDescription').value.trim();
+  const imagen = document.getElementById('productImage').value.trim();
 
-  if (!nombre || !categoria || !talla || !color) {
-    mensaje.textContent = 'Completa todos los campos.';
+  if (!nombre || !sku || !categoria || !talla || !color) {
+    mensaje.textContent = 'Completa todos los campos obligatorios.';
     return;
   }
 
   if (
-    !Number.isFinite(stock) || stock < 0 ||
+    !Number.isInteger(stock) || stock < 0 ||
     !Number.isFinite(costo) || costo < 0 ||
     !Number.isFinite(precio) || precio <= 0
   ) {
@@ -299,67 +380,100 @@ document.getElementById('productForm').addEventListener('submit', async function
   mensaje.textContent = '';
 
   try {
-    // 1. Registrar producto
-   
-// 1. Registrar producto
-const descripcion = document.getElementById('productDescription').value.trim();
-const imagen = document.getElementById('productImage').value.trim();
+    if (productoEnEdicion) {
+      // ACTUALIZAR PRODUCTO EXISTENTE
+      const { error: errorProducto } = await supabaseClient
+        .from('products')
+        .update({
+          name: nombre,
+          sku: sku,
+          category: categoria,
+          description: descripcion || null,
+          image_url: imagen || null
+        })
+        .eq('id', productoEnEdicion.productoId);
 
-const { data: producto, error: errorProducto } = await supabaseClient
-  .from('products')
-  .insert({
-    name: nombre,
-    sku: sku || null,
-    category: categoria,
-    description: descripcion || null,
-    image_url: imagen || null,
-    active: true
-  })
-  .select('id')
-  .single();
+      if (errorProducto) throw errorProducto;
 
-if (errorProducto) throw errorProducto;
+      // ACTUALIZAR SU VARIANTE
+      const { error: errorVariante } = await supabaseClient
+        .from('product_variants')
+        .update({
+          sku: sku,
+          size: talla,
+          color: color,
+          cost: costo,
+          price: precio,
+          stock: stock,
+          active: true
+        })
+        .eq('id', productoEnEdicion.varianteId);
 
-// 2. Registrar talla, color, costo, precio y stock
-const { error: errorVariante } = await supabaseClient
-  .from('product_variants')
-  .insert({
-    product_id: producto.id,
-    sku: sku || null,
-    size: talla,
-    color: color,
-    cost: costo,
-    price: precio,
-    stock: stock,
-    active: true
-  });
+      if (errorVariante) throw errorVariante;
 
-if (errorVariante) {
-  // Si falla la variante, eliminar el producto recién creado
-  await supabaseClient
-    .from('products')
-    .delete()
-    .eq('id', producto.id);
+      mensaje.textContent = '¡Producto actualizado correctamente!';
+      productoEnEdicion = null;
 
-  throw errorVariante;
-}
+    } else {
+      // REGISTRAR PRODUCTO NUEVO
+      const { data: producto, error: errorProducto } = await supabaseClient
+        .from('products')
+        .insert({
+          name: nombre,
+          sku: sku,
+          category: categoria,
+          description: descripcion || null,
+          image_url: imagen || null,
+          active: true
+        })
+        .select('id')
+        .single();
 
+      if (errorProducto) throw errorProducto;
 
-    mensaje.textContent = '¡Producto registrado correctamente!';
+      const { error: errorVariante } = await supabaseClient
+        .from('product_variants')
+        .insert({
+          product_id: producto.id,
+          sku: sku,
+          size: talla,
+          color: color,
+          cost: costo,
+          price: precio,
+          stock: stock,
+          active: true
+        });
+
+      if (errorVariante) {
+        await supabaseClient
+          .from('products')
+          .delete()
+          .eq('id', producto.id);
+
+        throw errorVariante;
+      }
+
+      mensaje.textContent = '¡Producto registrado correctamente!';
+    }
+
     this.reset();
+
+    boton.textContent = 'Registrar producto';
 
     await cargarProductos();
 
   } catch (error) {
-    console.error('Error al registrar:', error);
+    console.error('Error:', error);
     mensaje.textContent = 'Error: ' + error.message;
+
   } finally {
     boton.disabled = false;
-    boton.textContent = 'Registrar producto';
+    if (!productoEnEdicion) {
+      boton.textContent = 'Registrar producto';
+    }
   }
 });
 
-supabaseClient.auth.onAuthStateChange(() => {
   setTimeout(verificarAdministrador, 0);
 });
 
