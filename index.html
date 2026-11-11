@@ -440,7 +440,13 @@ function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':
 function changeCartQty(i,n){if(!cart[i])return;cart[i].qty=Math.max(0,cart[i].qty+n);if(!cart[i].qty)cart.splice(i,1);saveCart();renderCart()}
 function removeCartItem(i){cart.splice(i,1);saveCart();renderCart()}
 function closeCart(){document.getElementById('cartModal').classList.remove('open');document.body.style.overflow=''}
-function checkout(){if(!cart.length){alert('Tu carrito está vacío.');return}const name=document.getElementById('customerName').value.trim();const city=document.getElementById('customerCity').value.trim();if(!name||!city){alert('Completa tu nombre y tu ciudad o distrito para enviar el pedido.');return}const total=cart.reduce((a,x)=>a+(Number(x.unitPrice)||parsePrice(x.price))*x.qty,0);const lines=cart.map(x=>'- '+x.name+' | Talla '+x.size+' | Color '+x.color+' | Cantidad '+x.qty+' | '+x.price).join('\n');const msg='Hola, YOES. Quiero realizar este pedido:\n\n'+lines+'\n\nTotal referencial: S/ '+total.toFixed(2)+'\nNombre: '+name+'\nCiudad/distrito: '+city+'\n\nPor favor, confirmen disponibilidad y forma de entrega.';const phone=WHATSAPP_NUMBER.replace(/\D/g,'');const url=phone?'https://wa.me/'+phone+'?text='+encodeURIComponent(msg):'https://wa.me/?text='+encodeURIComponent(msg);window.open(url,'_blank','noopener');}
+function checkout(){if(!cart.length){alert('Tu carrito está vacío.');return}const name=document.getElementById('customerName').value.trim();const city=document.getElementById('customerCity').value.trim();if(!name||!city){alert('Completa tu nombre y tu ciudad o distrito para enviar el pedido.');return}const total=cart.reduce((a,x)=>a+(Number(x.unitPrice)||parsePrice(x.price))*x.qty,0);const lines=cart.map(x=>'- '+x.name+' | Talla '+x.size+' | Color '+x.color+' | Cantidad '+x.qty+' | '+x.price).join('\n');const msg =
+  'Hola, YOES. Quiero realizar este pedido:\n\n' +
+  lines + '\n\n' +
+  'Total: S/ ' + total.toFixed(2) + '\n\n' +
+  'Cliente: ' + name + '\n' +
+  'Ciudad: ' + city + '\n\n' +
+  'Por favor, confirmar disponibilidad y entrega.';const phone=WHATSAPP_NUMBER.replace(/\D/g,'');const url=phone?'https://wa.me/'+phone+'?text='+encodeURIComponent(msg):'https://wa.me/?text='+encodeURIComponent(msg);window.open(url,'_blank','noopener');}
 
 async function cargarProductosSupabase() {
   const db = window.yoesSupabase;
